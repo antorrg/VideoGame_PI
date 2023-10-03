@@ -1,9 +1,13 @@
+import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Videogamesss</h1>
+      <h1>
+        <p>"New app React "VideoGames"</p>
+        
+      </h1>
     </div>
   );
 }
