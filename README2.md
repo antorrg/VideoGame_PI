@@ -1,2 +1,3 @@
 # VideoGame_PI
-This is a proyect of "SoyHenry" bootcamp
+This is the individual project of the "SoyHenry" Bootcamp. My name is Antonio Rodriguez and on the day of the date () it was assigned to me and I began to prepare it.
+This consists of a "client" folder where the "front-end" application that is developed with React in version 18 is hosted...
