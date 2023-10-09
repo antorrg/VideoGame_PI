@@ -3,7 +3,7 @@
 const infoCleaner = (data)=>{
     const arr= data.results;
      array = arr.map(game=>{
-    //const platforms = game.parent_platforms.map((platform) => platform.name);
+        
     const platforms = game.parent_platforms.map((platObj) => platObj.platform.name);
 
     
@@ -19,8 +19,13 @@ const infoCleaner = (data)=>{
 });
   return array;
 }
-
+const cleanGenre = (data)=>{
+    const arr = data.results;
+    const array = arr.map((genreInfo) => ({ name: genreInfo.name }));
+    return array;
+}
 
 module.exports = {
-    infoCleaner
+    infoCleaner,
+    cleanGenre
 };

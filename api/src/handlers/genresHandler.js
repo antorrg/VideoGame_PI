@@ -1,10 +1,13 @@
 
 
 
-const getGenresHandler= (req,res)=>{
-    return {
-        "message": "Hello World, I am the Gender"
-    }    
+const getGenresHandler= async(req,res)=>{
+    try {
+     const response = await(genreDb());
+     res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }   
 
 };
 

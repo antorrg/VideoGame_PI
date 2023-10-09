@@ -1,17 +1,17 @@
 const {Router}=require('express');
-const usersRouter=Router(); 
+const gamesRouter=Router(); 
 
 const {getGamesHandler,getDetailHandler}=require('../handlers/gamesHandlers');
 const {getGenresHandler} = require('../handlers/genresHandler');
 
-usersRouter.get('/',(getGamesHandler));
+gamesRouter.get('/',(getGamesHandler));
 
 
  
-usersRouter.get('/:id',(getDetailHandler));
+gamesRouter.get('/:id',(getDetailHandler));
 
 
-usersRouter.get('/', (getGenresHandler));
+gamesRouter.get('/', (getGenresHandler));
 
 
-module.exports=usersRouter;
+module.exports=gamesRouter;
