@@ -19,6 +19,34 @@ const infoCleaner = (data)=>{
 });
   return array;
 }
+
+
+const infoClean2 = (data) => {
+    // Si data es un objeto, lo conviérte en un array con un solo elemento.
+    const dataArray = Array.isArray(data) ? data : [data];
+    // Mapea el array de objetos.
+    const resultArray = dataArray.map(game => {
+        const platforms = game.parent_platforms.map(platObj => platObj.platform.name);
+
+        return {
+            id: game.id,
+            name: game.name,
+            description: game.description,
+            platforms: platforms,
+            image: game.background_image,
+            released: game.released,
+            createdInDb: false
+        };
+    });
+
+    // Si data era un objeto, devuelve el primer elemento del resultado.
+    if (!Array.isArray(data)) {
+        return resultArray[0];
+    }
+
+    return resultArray;
+};
+
 const cleanGenre = (data)=>{
     const arr = data.results;
     const array = arr.map((genreInfo) => ({ name: genreInfo.name }));
@@ -27,5 +55,6 @@ const cleanGenre = (data)=>{
 
 module.exports = {
     infoCleaner,
-    cleanGenre
+    cleanGenre,
+    infoClean2 
 };

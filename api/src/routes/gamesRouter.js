@@ -11,7 +11,7 @@ gamesRouter.get('/',(getGamesHandler));
 gamesRouter.get('/:id',(getDetailHandler));
 
 
-gamesRouter.get('/', (getGenresHandler));
+gamesRouter.get('/genres', (getGenresHandler));
 
 
 module.exports=gamesRouter;

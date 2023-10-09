@@ -1,14 +1,13 @@
 const {Genre}=require('../dataBase');
-const axios= require('axios');
-require('dotenv').config();
-const {URL, API_KEY} = process.env;
-const {cleanGenre} = require('../utils/index');
 
 
 
-const genreDb = async()=>{};
+
+const genresDb = async(req, res)=>{
+    const  genresDb = await Genre.findAll();
+    return genresDb;
+};
 
 module.exports = {
-    fillGenresTable,
-    genreDb
+    genresDb
 }

@@ -2,7 +2,7 @@ const {Videogame}=require('../dataBase');
 const axios= require('axios');
 require('dotenv').config();
 const {URL, API_KEY} = process.env;
-const {infoCleaner} = require('../utils/index');
+const {infoCleaner,infoClean2 } = require('../utils/index');
 
 const getAllGames = async ()=> {
     const  gamesDB = await Videogame.findAll();
@@ -27,9 +27,20 @@ const gameByName = async(name)=>{
 };
 
 const getGameById= async(id,source)=>{
-    const game = source === 'api' ? (await axios.get(`${URL}games/${id}?${API_KEY}`)).data
-                                 : (await Videogame.findByPk(id));
-    return game;
+    if(source !== 'api'){
+        const infodb =(await Videogame.findByPk(id));
+        return infodb;
+    }
+    else{
+        const info=(await axios.get(`${URL}games/${id}?${API_KEY}`)).data;
+        const infoWash = infoClean2(info);
+        return infoWash;
+    }
+    // const game = source === 'api' ? (await axios.get(`${URL}games/${id}?${API_KEY}`)).data
+    //                              : (await Videogame.findByPk(id));
+    // const infoLimp=infoCleaner(game);
+    // return infoLimp;
+    
 };
 
 module.exports = {

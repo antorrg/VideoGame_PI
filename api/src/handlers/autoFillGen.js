@@ -13,9 +13,9 @@ const fillGenTable = async(req,res)=>{
         const existingGenres = await Genre.findAll();
         if (existingGenres.length === 0) {
           await Genre.bulkCreate(cleanGenre(genresData));
-          console.log('Tabla "genres" llenada exitosamente.');
+          console.log('"Genres" table fills succesfully.');
         } else {
-          console.log('La tabla "genres" ya contiene datos.');
+          console.log('The "genres" table already contains data.');
         }
       } catch (error) {
        console.error({error: error.message});

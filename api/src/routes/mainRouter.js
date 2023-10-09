@@ -6,6 +6,8 @@ const mainRouter=Router();
 
 mainRouter.use('/', gamesRouter);
 
+mainRouter.use('/genres', gamesRouter);
+
 mainRouter.use('/post', postsRouter);
 
 
