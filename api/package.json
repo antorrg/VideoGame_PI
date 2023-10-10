@@ -20,7 +20,8 @@
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "postgres": "^3.3.5",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

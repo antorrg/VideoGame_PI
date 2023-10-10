@@ -13,17 +13,17 @@
 // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 const server = require('./src/server');
-const {sequelize} = require('./src/database');
+const {sequelize} = require('./src/Base');
 const { fillGenTable } = require('./src/handlers/autoFillGen');
 
 require('dotenv').config();
 const {PORT} = process.env;
 
 
-server.listen(PORT, async () => {
+server.listen(PORT, async () => {  
     try {
         await sequelize.sync({force:false}),
-        console.log(fillGenTable()),
+        fillGenTable(),
 
         console.log(`Server is running on port ${PORT} ✔️
         😉 (Congratulations!! You haven't broken nothing yet!!!) ✅`);

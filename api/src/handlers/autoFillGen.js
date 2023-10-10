@@ -1,5 +1,5 @@
 const {cleanGenre}=require('../utils/index');
-const {Genre}=require('../dataBase');
+const {Genre}=require('../Base');
 const axios= require('axios');
 require('dotenv').config();
 const {URL_GEN, API_KEY} = process.env;

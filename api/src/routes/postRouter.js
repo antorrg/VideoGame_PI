@@ -1,8 +1,8 @@
 const {Router}=require('express');
-const postsRouter=Router(); 
-const {createGameHandler}=require('../handlers/postHandlers');
+const postRouter=Router(); 
+const createGameHandler=require('../handlers/postHandlers');
 
-postsRouter.post('/',(createGameHandler));
+postRouter.post('/',(createGameHandler));
 
 
-module.exports=postsRouter;
+module.exports=postRouter;

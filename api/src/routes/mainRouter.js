@@ -1,14 +1,12 @@
 const {Router}=require('express');
 const gamesRouter=require('./gamesRouter');
-const postsRouter=require('./postRouter');
+const postRouter=require('./postRouter');
 
 const mainRouter=Router();
 
 mainRouter.use('/', gamesRouter);
 
-mainRouter.use('/genres', gamesRouter);
-
-mainRouter.use('/post', postsRouter);
+mainRouter.use('/post', postRouter);
 
 
 

@@ -1,13 +1,12 @@
-const {Genre}=require('../dataBase');
+const {Genre}=require('../Base');
 
 
 
 
-const genresDb = async(req, res)=>{
+const genres = async(req,res)=>{
     const  genresDb = await Genre.findAll();
     return genresDb;
 };
 
-module.exports = {
-    genresDb
-}
+module.exports = genres;
+

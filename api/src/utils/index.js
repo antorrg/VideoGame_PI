@@ -5,7 +5,7 @@ const infoCleaner = (data)=>{
      array = arr.map(game=>{
         
     const platforms = game.parent_platforms.map((platObj) => platObj.platform.name);
-
+    const filtGen = game.genres.map(genre => genre.name);
     
     return{
         id: game.id,
@@ -13,6 +13,7 @@ const infoCleaner = (data)=>{
         description: game.description,
         platforms: platforms,
         image: game.background_image,
+        genres: filtGen,
         released: game.released,
         createdInDb: false
     }
@@ -27,6 +28,7 @@ const infoClean2 = (data) => {
     // Mapea el array de objetos.
     const resultArray = dataArray.map(game => {
         const platforms = game.parent_platforms.map(platObj => platObj.platform.name);
+        const filtGen = game.genres.map(genre => genre.name);
 
         return {
             id: game.id,
@@ -34,6 +36,7 @@ const infoClean2 = (data) => {
             description: game.description,
             platforms: platforms,
             image: game.background_image,
+            genres: filtGen,
             released: game.released,
             createdInDb: false
         };
@@ -58,3 +61,14 @@ module.exports = {
     cleanGenre,
     infoClean2 
 };
+
+/*const cleanGenre = (data) => {
+    const results = data.results;
+    const genreNames = results.map((game) => game.genres.map((genre) => genre.name));
+    
+    // genreNames es ahora una matriz de matrices, debes aplanarlo para obtener una matriz plana de nombres de géneros únicos.
+    const uniqueGenreNames = [...new Set(genreNames.flat())];
+    
+    return uniqueGenreNames;
+};
+*/
