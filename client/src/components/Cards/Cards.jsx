@@ -1,13 +1,13 @@
+import style from "./Cards.module.css";
+import Card from "../../respaldo/deVuelta/Card";
 
-
-
-
-function Home() {
-    return (
-      <>
-      </>
-    );
-  }
+function Home({ allGames, allGenres }) {
   
-  export default Home;
-  
+  return (
+    <div className={style.cardList}>
+        {allGames.map((game) => (<Card key={game.id} game={game} genres={allGenres} />))}
+    </div>
+  );
+}
+
+export default Home;
