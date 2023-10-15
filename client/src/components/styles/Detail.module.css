@@ -1,5 +1,5 @@
 .cont{
-    border: 0.25rem solid blue;
+    border: 1px solid blue;
     border-radius:  0.5rem;
     width: fit-content;
     font-weight: 600;
@@ -7,7 +7,8 @@
     padding: 1 rem;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: left;
     background-color: bisque;
 
     .descriptionTextarea{
@@ -17,7 +18,12 @@
     
 }
 .image{
+    display:flex;
+    justify-content: flex-start;
+    float: left;
+    clear: both; 
     width: 300px;
+    margin: 15px;
 }
 
 
@@ -27,5 +33,5 @@
     text-align: left;
 }
 .descriptionDiv{
-    text-decoration-color: black;
+    color: black;
 }

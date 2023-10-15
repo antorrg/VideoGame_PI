@@ -7,7 +7,7 @@ function Card( {game} ) {
     return (
       <div className={style.cardContainer} id={id}>
         <NavLink to={`/detail/${id}`}>
-          <h3>Name: {name}</h3>
+          <h3>{name}</h3>
         </NavLink>
         <h5>Genres: {genres.join(', ')}</h5>
         <img src={image} alt="Image not found." />

@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
         description:{type: DataTypes.TEXT, allowNull: false},
         platforms:{type: DataTypes.ARRAY(DataTypes.STRING), allowNull: false, defaultValue: [],},
         image:{type: DataTypes.STRING, allowNull: false},
-        released:{type: DataTypes.DATE, allowNull: false},
+        released:{type: DataTypes.DATEONLY, allowNull: false},
         rating:{type: DataTypes.FLOAT, allowNull: false},
         createdInDb:{type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true}
 

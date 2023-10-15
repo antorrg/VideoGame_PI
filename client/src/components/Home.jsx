@@ -21,7 +21,6 @@ function Home() {
 
 return(
   <div className={style.home}>
-     <h2 className={style.homeTitle}>Video Games</h2>
         <NavBar/>
         <Cards allGames={allGames}/>
   </div>

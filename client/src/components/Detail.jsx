@@ -8,6 +8,14 @@ function Detail() {
 
   const { id } = useParams();
   console.log(id);
+ 
+  const formatFields = (data) => {
+    if (Array.isArray(data)) {
+      return data.join(', ');
+    }
+     // Puedes cambiar esto por el mensaje que prefieras
+  };
+  
   
   //Llamado al Server
   useEffect(() => {
@@ -21,7 +29,9 @@ function Detail() {
     return setGame({});
   }, [id]);
 
-
+ 
+ let genresFil = formatFields(game.genres);
+ let platforFil = formatFields(game.platforms);
   
   return (
     <div className={style.cont} id={id}>
@@ -30,18 +40,16 @@ function Detail() {
       </div>
       <div className={style.text}>
         <h1> {game?.name}</h1>
-        <h3>Genres: {game?.genres}</h3>
+        <NavLink to={`/home`}><h3>Return to Home:</h3></NavLink>
+        <h3>Genres: {genresFil}</h3>
         <h3>Description:</h3>
         <div
         className={style.descriptionDiv}
         dangerouslySetInnerHTML={{ __html: game?.description }}
       />
-        <h3>Platforms: {game?.platforms}</h3>
+        <h3>Platforms: {platforFil}</h3>
         <h3>Released: {game?.released}</h3>
         <h3>Rating: {game?.rating}</h3>
-        <NavLink to={`/home`}>
-          <h3>Return to Home:</h3>
-        </NavLink>
       </div>
     </div>
   );
