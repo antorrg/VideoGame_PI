@@ -5,8 +5,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getAllGenres,getAllGames}from '../Redux/actions';
 
 //Importacion de modulos:
-import NavBar from './NavBar/NavBar';
-import Cards from './Cards/Cards';
+import NavBar from './NavBar';
+import Cards from './Cards';
 import style from './styles/Home.module.css';
 
 function Home() {
@@ -23,7 +23,7 @@ return(
   <div className={style.home}>
      <h2 className={style.homeTitle}>Video Games</h2>
         <NavBar/>
-        <Cards allGames={allGames} allGenres = {allGenres}/>
+        <Cards allGames={allGames}/>
   </div>
 )
 

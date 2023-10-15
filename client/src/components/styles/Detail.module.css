@@ -1,0 +1,31 @@
+.cont{
+    border: 0.25rem solid blue;
+    border-radius:  0.5rem;
+    width: fit-content;
+    font-weight: 600;
+    margin: auto;
+    padding: 1 rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: bisque;
+
+    .descriptionTextarea{
+        width: 200px;
+        overflow:auto;
+    }
+    
+}
+.image{
+    width: 300px;
+}
+
+
+.text{
+    padding: 1rem;
+    color:blue;
+    text-align: left;
+}
+.descriptionDiv{
+    text-decoration-color: black;
+}

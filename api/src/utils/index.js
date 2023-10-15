@@ -6,7 +6,7 @@ const infoCleaner = (data)=>{
         
     const platforms = game.parent_platforms.map((platObj) => platObj.platform.name);
     const filtGen = game.genres.map(genre => genre.name);
-    
+   // const genFil = Array.isArray(filtGen) ? genFil : [genFil];
     return{
         id: game.id,
         name: game.name,

@@ -1,5 +1,5 @@
 //Componentes:
-import {GET_ALL_GAMES, GET_ALL_GENRES}from './actions-types';
+import {GET_ALL_GAMES, GET_ALL_GENRES }from './actions-types';
 //Dependencias:
 import axios from 'axios';
 

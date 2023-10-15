@@ -15,9 +15,17 @@ const getAllGames = async ()=> {
         }
       }]
     });
+    //esta funcion era para que no me retorne los generos con propiedad nombre
+    const gamesWithGenres = gamesDB.map((game) => {
+      const genreNames = game.Genres.map((genres) => genres.name);
+      return {
+        ...game.get({ plain: true }),
+        genres: genreNames, // Concatena los nombres de géneros con comas
+      };
+    });
   const infoApi = (await axios.get(`${URL}games?${API_KEY}`)).data;
   const gamesAPI = infoCleaner(infoApi);
-  return [...gamesDB, ...gamesAPI];
+  return [...gamesWithGenres, ...gamesAPI];
 
   } catch (error) {
     throw new Error({error:error.message})
