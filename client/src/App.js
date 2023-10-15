@@ -10,10 +10,9 @@ import './App.css';
 
 function App() {
   return (
-    
     <div className="App">
-  
-        <Routes>
+      
+      <Routes>
           <Route path='/' element={<Landing />}></Route>
           <Route exact path='/home' element={<Home />}></Route>
           <Route path='/home/:id' element={<Detail />}></Route>
@@ -21,9 +20,8 @@ function App() {
           
         </Routes>
 
-      </div>
-      );
-   
+    </div>
+  );
 }
 
 export default App;

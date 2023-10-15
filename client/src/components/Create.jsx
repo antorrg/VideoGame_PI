@@ -1,7 +1,4 @@
 
-
-
-
 function Create() {
     return (
       <div>Yo soy create</div>

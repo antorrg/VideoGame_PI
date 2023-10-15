@@ -2,7 +2,6 @@
 import {GET_ALL_GAMES, GET_ALL_GENRES}from './actions-types';
 //Dependencias:
 import axios from 'axios';
-const {Url} = process.env.REACT_APP_API_URL;
 
 export const getAllGames =()=> async (dispatch)=>{
     try {

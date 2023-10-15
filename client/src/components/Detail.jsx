@@ -2,11 +2,9 @@
 
 
 
-function Detail
-() {
+function Detail() {
     return (
-      <>
-      </>
+      <div></div>
     );
   }
   

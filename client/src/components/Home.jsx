@@ -2,12 +2,12 @@
 import {useState, useEffect}from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 //De Redux:
-import {getAllGenres,getAllGames}from '../../Redux/actions';
+import {getAllGenres,getAllGames}from '../Redux/actions';
 
 //Importacion de modulos:
-import NavBar from '../../components/NavBar/NavBar';
-import Cards from '../../components/Cards/Cards';
-import style from './Home.module.css';
+import NavBar from './NavBar/NavBar';
+import Cards from './Cards/Cards';
+import style from './styles/Home.module.css';
 
 function Home() {
   const dispatch =useDispatch();

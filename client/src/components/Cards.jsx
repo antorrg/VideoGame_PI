@@ -1,5 +1,5 @@
-import style from "./Cards.module.css";
-import Card from "../../respaldo/deVuelta/Card";
+import style from "./styles/Cards.module.css";
+import Card from "./Card";
 
 function Home({ allGames, allGenres }) {
   
