@@ -1,12 +1,16 @@
 import style from "./styles/Cards.module.css";
 import Card from "./Card";
 
-function Cards({ allGames, allGenres }) {
+function Cards({ allGames, allGenres, gamesPerPage,currentPage }) {
+  //Paginacion:
+  const indexOfLastGame = currentPage * gamesPerPage;
+  const indexOfFirstGame = indexOfLastGame - gamesPerPage;
+  const currentGames = allGames.slice(indexOfFirstGame, indexOfLastGame);
   
   console.log(allGames);
   return (
     <div className={style.cardList}>
-        {allGames.map((game) => (<Card key={game.id} game={game} allGenre={allGenres} />))}
+        {currentGames.map((game) => (<Card key={game.id} game={game} allGenre={allGenres} />))}
     </div>
   );
 }

@@ -8,6 +8,9 @@ const { validate, v4: isUuidv4 } = require('uuid');
 
 const getAllGames = async ()=> {
   try {
+    let gamesCreated = [];
+
+    if (currentPage === 1) {
     const  gamesDB = await Videogame.findAll({
       include: [{ model: Genre, attributes: ['name'], // Especifica las columnas que deseas incluir del modelo Genre
         through: {
@@ -23,11 +26,19 @@ const getAllGames = async ()=> {
         genres: genreNames, // Concatena los nombres de géneros con comas
       };
     });
-  const infoApi = (await axios.get(`${URL}games?${API_KEY}`)).data;
+     gamesCreated = gamesWithGenres;
+    }
+    //Info de la API:
+  const infoApi = (await axios.get(`${URL}games?${API_KEY}&page=${currentPage}`)).data;
   const gamesAPI = infoCleaner(infoApi);
-  return [...gamesWithGenres, ...gamesAPI];
+  if (gamesAPI.length > 0) {
+    currentPage = (currentPage % 5) + 1; // Cambia de 1 a 5 y luego vuelve a 1
+  }
+  return [...gamesCreated, ...gamesAPI];
 
   } catch (error) {
+    // En caso de error, regresar a la página 1
+    currentPage = 1;
     throw new Error({error:error.message})
   }
    

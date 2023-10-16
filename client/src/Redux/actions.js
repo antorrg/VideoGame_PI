@@ -5,10 +5,14 @@ import axios from 'axios';
 
 export const getAllGames =()=> async (dispatch)=>{
     try {
+      const allGames = [];
+      for (let i = 1; i <= 5; i++) {
       const response = await axios(`http://localhost:3001/games`);
+      allGames.push(...response.data);
+    }
         return dispatch({
           type:GET_ALL_GAMES,
-          payload: response.data,
+          payload: allGames,
         });
       
     } catch (error) {
