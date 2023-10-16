@@ -2,19 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink, useParams } from "react-router-dom";
 import style from "./styles/Detail.module.css";
-
+import {formatFields} from '../utils/formaters';
 function Detail() {
   const [game, setGame] = useState({});
 
   const { id } = useParams();
   console.log(id);
  
-  const formatFields = (data) => {
-    if (Array.isArray(data)) {
-      return data.join(', ');
-    }
-     // Puedes cambiar esto por el mensaje que prefieras
-  };
+  
   
   
   //Llamado al Server

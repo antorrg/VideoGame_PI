@@ -1,4 +1,4 @@
-const {cleanGenre}=require('../utils/index');
+const {cleanGenre}=require('../helpers/index');
 const {Genre}=require('../Base');
 const axios= require('axios');
 require('dotenv').config();

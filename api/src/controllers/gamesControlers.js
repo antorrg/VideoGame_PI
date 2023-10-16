@@ -2,7 +2,7 @@ const {Videogame, Genre}=require('../Base');
 const axios= require('axios');
 require('dotenv').config();
 const {URL, API_KEY} = process.env;
-const {infoCleaner,infoClean2 } = require('../utils/index');
+const {infoCleaner,infoClean2 } = require('../helpers/index');
 const { validate, v4: isUuidv4 } = require('uuid');
 
 
@@ -10,7 +10,6 @@ const getAllGames = async ()=> {
   try {
     let gamesCreated = [];
 
-    if (currentPage === 1) {
     const  gamesDB = await Videogame.findAll({
       include: [{ model: Genre, attributes: ['name'], // Especifica las columnas que deseas incluir del modelo Genre
         through: {
@@ -27,18 +26,23 @@ const getAllGames = async ()=> {
       };
     });
      gamesCreated = gamesWithGenres;
-    }
+    
     //Info de la API:
-  const infoApi = (await axios.get(`${URL}games?${API_KEY}&page=${currentPage}`)).data;
-  const gamesAPI = infoCleaner(infoApi);
-  if (gamesAPI.length > 0) {
-    currentPage = (currentPage % 5) + 1; // Cambia de 1 a 5 y luego vuelve a 1
-  }
-  return [...gamesCreated, ...gamesAPI];
+  
+    const gamesAPI = [];
+    for(let page = 1; page<=5; page++){
+    const url = `${URL}games?${API_KEY}&page=${page}`
 
+    const infoApi = (await axios.get(url)).data;
+    const gamesFiltered = infoCleaner(infoApi);
+    gamesAPI.push(gamesFiltered)
+    }
+    
+    const gamesApiF = gamesAPI.flat(1);
+
+  return [...gamesCreated, ...gamesApiF];
+  
   } catch (error) {
-    // En caso de error, regresar a la página 1
-    currentPage = 1;
     throw new Error({error:error.message})
   }
    

@@ -62,13 +62,3 @@ module.exports = {
     infoClean2 
 };
 
-/*const cleanGenre = (data) => {
-    const results = data.results;
-    const genreNames = results.map((game) => game.genres.map((genre) => genre.name));
-    
-    // genreNames es ahora una matriz de matrices, debes aplanarlo para obtener una matriz plana de nombres de géneros únicos.
-    const uniqueGenreNames = [...new Set(genreNames.flat())];
-    
-    return uniqueGenreNames;
-};
-*/
