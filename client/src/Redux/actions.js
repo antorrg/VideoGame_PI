@@ -1,5 +1,5 @@
 //Componentes:
-import {GET_ALL_GAMES, GET_ALL_GENRES }from './actions-types';
+import {GET_ALL_GAMES, GET_ALL_GENRES, CREATE_VIDEOGAME, GET_BY_NAME }from './actions-types';
 //Dependencias:
 import axios from 'axios';
 
@@ -29,3 +29,28 @@ export const getAllGames =()=> async (dispatch)=>{
       console.error('Error fetching genres:', error);
     }
   };
+  
+  export const getByName = (name) => {
+    return {
+      type: GET_BY_NAME,
+      payload: name,
+    };
+  };
+
+  export const createVideogame = (payload) => {
+    return async (dispatch) => {
+      try {
+        const data = await axios.post("http://localhost:3001/", payload); 
+        dispatch({
+          type: CREATE_VIDEOGAME,
+          payload: data.data, 
+        });
+        
+      } catch (error) {
+        
+        console.error("Error al crear el videojuego:", error);
+        
+      }
+    };
+  };
+  

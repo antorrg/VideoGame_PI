@@ -15,6 +15,7 @@ const infoCleaner = (data)=>{
         image: game.background_image,
         genres: filtGen,
         released: game.released,
+        rating: game.rating,
         createdInDb: false
     }
 });
@@ -38,6 +39,7 @@ const infoClean2 = (data) => {
             image: game.background_image,
             genres: filtGen,
             released: game.released,
+            rating: game.rating,
             createdInDb: false
         };
     });
