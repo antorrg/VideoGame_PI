@@ -24,9 +24,10 @@ function Detail() {
     return setGame({});
   }, [id]);
 
- 
- let genresFil = formatFields(game.genres);
- let platforFil = formatFields(game.platforms);
+  let genresFil = formatFields(game.genres);
+  let platforFil = formatFields(game.platforms);
+  console.log(game);
+  console.log(game.genres)
   
   return (
     <div className={style.cont} id={id}>

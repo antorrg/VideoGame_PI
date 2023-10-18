@@ -135,6 +135,15 @@ export default function Create() {
           <h1 className={style.title}> Create your Videogame </h1>
           <div className={style.boxCreate}>
             <div className={style.left}>
+            <div className={style.home}>
+              <NavLink
+                to="/home"
+                style={{ textDecoration: "none" }}
+                onClick={(e) => handleRefresh(e)}
+              >
+                <button className={style.back}> CANCEL </button>
+              </NavLink>
+            </div>
               <div className={style.group}>
                 <input
                   type="text"
@@ -284,15 +293,6 @@ export default function Create() {
             <button onSubmit={handleSubmit} className={style.submit}>
               CREATE VIDEOGAME
             </button>
-          </div>
-          <div className={style.home}>
-            <NavLink
-              to="/home"
-              style={{ textDecoration: "none" }}
-              onClick={(e) => handleRefresh(e)}
-            >
-              <button className={style.back}> CANCEL </button>
-            </NavLink>
           </div>
         </div>
       </form>

@@ -1,20 +1,24 @@
 //Importacion de dependecias:
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useParams, useLocation} from "react-router-dom";
 //De Redux:
-import { getAllGenres, getAllGames } from "../Redux/actions";
+import { getAllGames,getAllGenres  } from "../Redux/actions";
 
 //Importacion de modulos:
 import NavBar from "./NavBar";
 import Cards from "./Cards";
-import Landing from './LandingPage';
 import style from "./styles/Home.module.css";
 
 function Home() {
   const dispatch = useDispatch();
   const allGenres = useSelector((state) => state.allGenres);
   const allGames = useSelector((state) => state.allGames);
+  //const { name } = useParams();
+  //const location = useLocation();
+  //const queryParams = new URLSearchParams(location.search);
+  //const searchName = queryParams.get('name');
+  //const [isSearching, setIsSearching] = useState(false);
   //Para Paginacion:
   const [currentPage, setCurrentPage] = useState(1);
   const gamesPerPage = 15; // Número de juegos por página
@@ -35,8 +39,8 @@ function Home() {
   
 
   useEffect(() => {
-    dispatch(getAllGenres());
     dispatch(getAllGames());
+    //dispatch(getByName());
   }, [dispatch]);
 
   return (
@@ -51,3 +55,5 @@ function Home() {
   );
 }
 export default Home;
+
+//{searchName ? gamesByName : allGames}

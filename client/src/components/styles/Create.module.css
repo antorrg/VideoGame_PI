@@ -13,16 +13,16 @@
     text-align: center;
     font-weight: 700;
     font-family: "Teko", serif;
-    color: whitesmoke;
+    color: rgb(12, 11, 11);
     letter-spacing: 3px;
   }
   
   .form {
-    background: rgb(180, 54, 180);
+    background: rgba(226, 154, 237, 0.963);
     padding: 45px 0;
     border-radius: 20px;
     box-shadow: 
-    0 0 5px rgb(254, 240, 255),
+    0 0 5px rgb(249, 240, 250),
     0 0 10px rgb(247, 210, 250),
     0 0 15px rgb(245, 169, 250),
     0 0 20px rgb(234, 129, 248),
@@ -52,7 +52,7 @@
   
   .input {
     background: none;
-    color: #c6c6c6;
+    color: #2a0f0f;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
@@ -77,14 +77,14 @@
     transition: 0.5s all;
     pointer-events: none;
     letter-spacing: 2px;
-    color:rgb(247, 210, 250);
+    color:rgb(16, 5, 17);
   }
   
   .input:focus~.label,
   .input:valid~l.abel {
     top: -14px;
     font-size: 15px;
-    color: rgb(247, 210, 250);
+    color: rgb(16,5,17);
   
   }
   
@@ -96,7 +96,7 @@
     padding: 10px;
     background: transparent;
     outline: none;
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
     font-weight: 500;
     font-family: 'Teko', serif;
     letter-spacing: 2px;
@@ -105,13 +105,13 @@
     border-radius: 15px;
   }
   .textareacr::placeholder{
-    color: whitesmoke;
+    color: rgb(0,0,0);
     letter-spacing: 2px;
     font-weight: 400;
   }
   
   .description {
-    color: rgb(247, 210, 250);
+    color: rgb(0,0,0);
     font-family: 'Teko', serif;
     font-size: 18px;
     letter-spacing: 2px;
@@ -126,7 +126,7 @@
   .textareacr:valid~.label{
     top: -30px;
     font-size: 15px;
-    color: #fff;
+    color: #080303;
   }
   
   
@@ -219,7 +219,7 @@
   }
   
   .x {
-      color: #ffff;
+      color: #000000;
       font-weight: 700;
   }
   
@@ -235,7 +235,7 @@
     letter-spacing: 2px;
     border: 1px solid;
     display: block;
-    width: 20%;
+    width: 30%;
     margin: 10px auto;
     color: #fff;
     height: 40px;
@@ -249,7 +249,7 @@
     0 0 25px rgb(246, 117, 255),
     0 0 30px rgb(234, 77, 255);
     font-weight: 400;
-    background: #0d91a8;;
+    background: linear-gradient(to right, #dc24e2, #3961e6);
     border: 1px solid;
   }
   .back:hover{

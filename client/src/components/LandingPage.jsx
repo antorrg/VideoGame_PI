@@ -7,7 +7,7 @@ function Landing() {
       <div className={styles.containerTitle}>
         <h1 className={styles.titleLanding}>Welcome to VIDEOGAMES</h1>
         <Link to="/home">
-          <button className={styles.btnLanding}>ENTER</button>
+          <button className=''>ENTER</button>
         </Link>
       </div>
     </div>
