@@ -1,14 +1,15 @@
-import { Link } from "react-router-dom";
-import styles from "./styles/Landing.module.css";
+import styles from "./viewStyles/Landing.module.css";
+import { NavLink } from "react-router-dom";
+
 
 function Landing() {
   return (
-    <div className={styles.imageLanding}>
+    <div className={styles.home}>
       <div className={styles.containerTitle}>
         <h1 className={styles.titleLanding}>Welcome to VIDEOGAMES</h1>
-        <Link to="/home">
+        <NavLink classname = {styles.pageNavigationButton }to="/home">
           <button className=''>ENTER</button>
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

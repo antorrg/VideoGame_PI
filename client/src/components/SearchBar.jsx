@@ -1,33 +1,67 @@
 
 import style from './styles/SearchBar.module.css'
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getsByName } from "../Redux/actions"; // Importa la acción getByName
+import { getAllGames, getByName } from "../Redux/actions";
+import { useNavigate } from "react-router-dom";
 
-
-export default function SearchBar() {
-  let [name, setName] = useState(""); // Crea un estado local para el nombre
-
+function SearchBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
 
-  
+  // const handleSearch = async () => {
+  //   if (searchTerm.trim() !== "") {
+  //     // Realiza la búsqueda en el estado con el nombre ingresado
+  //     dispatch(getByName(searchTerm));
+  //     // Navega a la página de inicio con el nombre como parámetro
+  //     navigate(`/home/${searchTerm}`);
+  //   } else {
+  //     // Si no se ingresa un nombre, obtiene todos los juegos
+  //     dispatch(getAllGames());
+  //     // Navega a la página de inicio
+  //     navigate("/home");
+  //   }
+  // };
+
+  const handleSearch = async () => {
+    if (searchTerm.trim() !== "") {
+      // Realiza la búsqueda en el estado con el nombre ingresado
+      dispatch(getByName(searchTerm));
+      // Navega a la página de inicio con el nombre como parámetro
+      navigate(`/home/${searchTerm}`);
+      
+      // Borra el valor del campo de búsqueda
+      setSearchTerm("");
+    } else {
+      // Si no se ingresa un nombre, obtiene todos los juegos
+      dispatch(getAllGames());
+      // Navega a la página de inicio
+      navigate("/home");
+    }
+  };
+
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      // Si se presiona la tecla "Enter," activa la búsqueda
+      handleSearch();
+    }
+  };
+
   return (
     <div className={style.searchBar}>
       <input
-        className={''}
         type="search"
-        placeholder="Example: 'The witcher'"
-        onChange='{}'
-        value={name}
-        name={name}
+        placeholder="Search"
+        value={searchTerm}
+        onChange={(event) => setSearchTerm(event.target.value)}
+        onKeyDown={handleKeyPress}
       />
-      <button
-        className={''}
-        type="submit"
-        onClick=''
-      >
-        <b> •SEARCH•</b>
-      </button>
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 }
+
+export default SearchBar;
+

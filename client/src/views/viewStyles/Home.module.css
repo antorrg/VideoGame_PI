@@ -1,0 +1,45 @@
+  
+.home {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    text-align: center;
+    align-items: center;
+}
+.homeTitle {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 3em;
+    color: #0ccac4;
+    font-family: "Bigelow Rules";
+    
+
+}
+/* En tu archivo CSS o módulo de estilos correspondiente */
+.pageNavigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pageNavigation button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .pageNavigation button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pageNavigation span {
+    background-color: #ccc;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  

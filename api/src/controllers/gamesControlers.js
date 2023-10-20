@@ -30,14 +30,14 @@ const getAllGames = async ()=> {
     //Info de la API:
   
     const gamesAPI = [];
-    for(let page = 1; page<=5; page++){
-    const url = `${URL}games?${API_KEY}&page=${page}`
+   // for(let page = 1; page<=5; page++){
+    const url = `${URL}games?${API_KEY}`
 
     const infoApi = (await axios.get(url)).data;
     const gamesFiltered = infoCleaner(infoApi);
     gamesAPI.push(gamesFiltered)
-    }
-    
+    //}
+    //&page=${1}
     const gamesApiF = gamesAPI.flat(1);
 
   return [...gamesCreated, ...gamesApiF];

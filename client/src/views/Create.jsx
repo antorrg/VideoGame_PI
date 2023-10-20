@@ -1,9 +1,9 @@
 
+import style from "./viewStyles/Create.module.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import style from "./styles/Create.module.css";
 import { createVideogame,  getAllGenres, getAllGames } from "../Redux/actions";
 import validate from '../utils/validate';
 
@@ -63,22 +63,22 @@ export default function Create() {
     );
   }
 
-  function handleSelectGenre(e) {
+  function handleSelectGenre(event) {
     /* check if genres is not double */
-    if (!input.genres.includes(e.target.value)) {
+    if (!input.genres.includes(event.target.value)) {
       setInput({
         ...input,
-        genres: [...input.genres, e.target.value],
+        genres: [...input.genres, event.target.value],
       });
     }
   }
 
-  function handleSelectPlatform(e) {
+  function handleSelectPlatform(event) {
     /* check if platforms is not double */
-    if (!input.platforms.includes(e.target.value)) {
+    if (!input.platforms.includes(event.target.value)) {
       setInput({
         ...input,
-        platforms: [...input.platforms, e.target.value],
+        platforms: [...input.platforms, event.target.value],
       });
     }
   }

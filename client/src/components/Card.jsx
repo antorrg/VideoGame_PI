@@ -7,7 +7,7 @@ function Card( {game} ) {
  const genreFor = formatFields(genres);
   console.log(id)
     return (
-      <div className={style.cardContainer} id={id}>
+      <div className={style.cardContainer} key={id}>
         <NavLink to={`/detail/${id}`}>
           <h3>{name}</h3>
         </NavLink>

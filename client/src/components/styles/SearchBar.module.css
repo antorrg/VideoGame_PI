@@ -1,8 +1,9 @@
 .searchBar {
-    float: left;
-    position: relative;
-    margin-top: 0;
+    float: center;
+    position:relative;
+    margin-top: 30px;
     margin-left: 10px;
+    margin-bottom: 10px;
   }
   .search {
     transition-duration: 0.4s;
