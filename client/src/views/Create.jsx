@@ -1,6 +1,6 @@
 
 import style from "./viewStyles/Create.module.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -111,6 +111,7 @@ export default function Create() {
         alert("All fields must be completed");
       } else {
         if (Object.keys(error).length === 0 && input.genres.length > 0) {
+          console.log(input)
           dispatch(createVideogame(input));
           alert("Videogame successfully created");
           setInput({
@@ -139,7 +140,7 @@ export default function Create() {
               <NavLink
                 to="/home"
                 style={{ textDecoration: "none" }}
-                onClick={(e) => handleRefresh(e)}
+                onClick={(event) => handleRefresh(event)}
               >
                 <button className={style.back}> CANCEL </button>
               </NavLink>

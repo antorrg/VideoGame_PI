@@ -48,29 +48,20 @@ export const getAllGames =()=> async (dispatch)=>{
       payload: name,
     };
   };
-  // export const getByName = (name) => async{
-  //   return (dispatch, getState) => {
-  //       axios
-  //         .get(`http://localhost:3001/game/${name}`)
-  //         .then((response) => {
-  //           // Despacha una acción para actualizar gamesByName con los datos obtenidos
-  //           dispatch({
-  //             type: GET_BY_NAME,
-  //             payload: {
-  //               name: name, // Agrega el nombre buscado
-  //               games: response.data, // Agrega el arreglo de juegos de la API
-  //             },
-  //           });
-            
-  //         })
-  //         .catch((error) => {
-  //           console.error('Error fetching game:', error);
-  //           // Maneja el error, por ejemplo, mostrando una alerta
-  //           alert('Error fetching game');
-  //         });
-  //     }
-  //   };
-  // };
+  //export const getAllGames =(name)=> async (dispatch)=>{
+  //   try {
+  //     const response = await axios(`http://localhost:3001/games?name=${name}`);
+  //       return dispatch({
+  //         type:GET_ALL_GAMES,
+  //         payload: response.data,
+  //       });
+      
+  //   } catch (error) {
+  //     alert("Could not found the games selected");
+  //   }  
+  
+    
+  // }
    
   export const createVideogame = (payload) => {
     return async (dispatch) => {
@@ -100,6 +91,6 @@ export const getAllGames =()=> async (dispatch)=>{
 
 
 //?@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-// Renderizado paginado:
+
 
   

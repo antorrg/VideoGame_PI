@@ -1,8 +1,7 @@
-
-import style from './styles/SearchBar.module.css'
+import style from ".././styles/SearchBar.module.css";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getAllGames, getByName } from "../Redux/actions";
+import { getAllGames, getByName } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
 
 function SearchBar() {
@@ -10,27 +9,13 @@ function SearchBar() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
 
-  // const handleSearch = async () => {
-  //   if (searchTerm.trim() !== "") {
-  //     // Realiza la búsqueda en el estado con el nombre ingresado
-  //     dispatch(getByName(searchTerm));
-  //     // Navega a la página de inicio con el nombre como parámetro
-  //     navigate(`/home/${searchTerm}`);
-  //   } else {
-  //     // Si no se ingresa un nombre, obtiene todos los juegos
-  //     dispatch(getAllGames());
-  //     // Navega a la página de inicio
-  //     navigate("/home");
-  //   }
-  // };
-
   const handleSearch = async () => {
     if (searchTerm.trim() !== "") {
       // Realiza la búsqueda en el estado con el nombre ingresado
       dispatch(getByName(searchTerm));
       // Navega a la página de inicio con el nombre como parámetro
       navigate(`/home/${searchTerm}`);
-      
+
       // Borra el valor del campo de búsqueda
       setSearchTerm("");
     } else {
@@ -40,7 +25,6 @@ function SearchBar() {
       navigate("/home");
     }
   };
-
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
@@ -64,4 +48,3 @@ function SearchBar() {
 }
 
 export default SearchBar;
-

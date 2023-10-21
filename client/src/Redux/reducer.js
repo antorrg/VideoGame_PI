@@ -14,7 +14,7 @@ const initialState= {
     allGenres: [],
     gamesByName: [],
     gamesById:[],
-    isLoading: true,
+    isLoading: false,
     
 }
 
@@ -25,7 +25,7 @@ const reducer= (state= initialState, {type, payload})=>{
                 ...state,
                 allGames: payload,
                 sortGames: payload,
-                isLoading: payload,
+                isLoading: false,
             }
 
       case GET_ALL_GENRES:
@@ -38,7 +38,7 @@ const reducer= (state= initialState, {type, payload})=>{
             return {
                 ...state,
                 allGames: payload,
-        
+                isLoading:false,
             }
             
       case GET_BY_NAME:
