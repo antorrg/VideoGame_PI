@@ -5,5 +5,6 @@ export const GET_ALL_GENRES ='GET_ALL_GENRES';
 export const CREATE_VIDEOGAME ='CREATE_VIDEOGAME';
 export const ORDER_ALPHABET ='ORDER_ALPHABET';
 export const ORDER_GENRE = 'ORDER_GENRE';
-export const SET_PAGE = 'SET_PAGE';
+export const ORDER_RATING= 'ORDER_RATING';
+export const IS_CREATED = 'IS_CREATED';
 export const LOADING = 'LOADING';

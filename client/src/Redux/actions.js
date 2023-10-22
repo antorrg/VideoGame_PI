@@ -9,7 +9,9 @@ import {
   GET_BY_NAME, 
   GET_BY_ID, 
   ORDER_ALPHABET,
-  ORDER_GENRE
+  ORDER_GENRE,
+  ORDER_RATING,
+  IS_CREATED
 }from './actions-types';
 
 export const getAllGames =()=> async (dispatch)=>{
@@ -56,20 +58,7 @@ export const getAllGames =()=> async (dispatch)=>{
     })
     }
   };
-  //export const getByName =(name)=> async (dispatch)=>{
-  //   try {
-  //     const response = await axios(`http://localhost:3001/games?name=${name}`);
-  //       return dispatch({
-  //         type:GET_BY_NAME,
-  //         payload: response.data,
-  //       });
-      
-  //   } catch (error) {
-  //     alert("Could not found the games selected");
-  //   }  
   
-    
-  // }
    
   export const createVideogame = (payload) => {
     return async (dispatch) => {
@@ -88,30 +77,35 @@ export const getAllGames =()=> async (dispatch)=>{
     };
   };
 
-  //?@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  //Sortings functions:
-  export const orderAlphabet = (payload) => {
-    return{
-        type: ORDER_ALPHABET,
-        payload,
-    }
-};
 
 //?@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//? Filters:
-// export const getGamesForGenre = (nameGenre) => {
-//   return (dispatch)=>{({
-//     type: ORDER_GENRE,
-//     payload: nameGenre,
-//   });
-//  }
-// };
-export function getGamesForGenre(name) {
-  return (dispatch)=>{({
+//? Sortings functions and Filters:
+
+export const orderAlphabet = (payload) => {
+  return{
+      type: ORDER_ALPHABET,
+      payload,
+  }
+};
+
+export const getGamesForGenre = (name) =>{
+  return {
     type: ORDER_GENRE,
     payload:name
-  })
-  };
+  }
+  
 }
 
+export const orderbyRating = (rating)=>{
+  return{
+    type: ORDER_RATING,
+    payload:rating
+  }
+}
+ export const isCreated = (payload)=>{
+  return{
+    type:IS_CREATED,
+    payload,
+  }
+ }
   

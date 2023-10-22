@@ -1,5 +1,5 @@
 import style from ".././styles/SearchBar.module.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAllGames, getByName } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";

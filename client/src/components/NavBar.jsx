@@ -1,11 +1,9 @@
 import style from "./styles/NavBar.module.css";
-//import { useState } from "react";
 
 import { NavLink } from "react-router-dom";
-import {SearchBar, OrderByName} from "./SubNavs/index";
-import OrderByGenre from "./SubNavs/OrderByGenre";
+import {SearchBar, AlphabetOrder, OrderByGenre, OrderByRating, IsCreated} from "./SubNavs/index";
 export default function NavBar() {
-  //const [order, setOrder] = useState("");
+  
 
   return (
     <div className={style.nav}>
@@ -16,33 +14,25 @@ export default function NavBar() {
         </NavLink>
       </div>
       <div className={style.linksTitle2}>
-        <OrderByName/>
+        <AlphabetOrder/>
       </div>
       <div className={style.linksTitle3}>
         <OrderByGenre/>
       </div>
-      
-     
       
       <div className={style.linkTitle}>
         <NavLink to="/form">
           <button>CREATE</button>
         </NavLink>
       </div>
+      <div className={style.linkTitle2}>
+        <OrderByRating/>
+      </div>
+      <div className={style.linkTitle3}>
+        <IsCreated/>
+      </div>
       <SearchBar />
     </div>
   );
 }
 
-// const dispatch = useDispatch();
-// const [selectedSort, setSelectedSort] = useState("null");
-
-// const handleSortChange = (event) => {
-//   const selectedValue = event.target.value;
-//   setSelectedSort(selectedValue);
-
-//   // Solo dispara la acción si se selecciona una opción válida (no "null")
-//   if (selectedValue !== "null") {
-//     dispatch(sortGame(selectedValue));
-//   }
-// };

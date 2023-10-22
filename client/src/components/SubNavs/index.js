@@ -1,5 +1,5 @@
 import IsCreated from './IsCreated';
-import OrderByName from './OrderByName';
+import AlphabetOrder from './AlphabetOrder';
 import OrderByGenre from './OrderByGenre';
 import OrderByRating from './OrderByRating';
 import SearchBar from './SearchBar';
@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 export {
     IsCreated,
     OrderByGenre,
-    OrderByName,
+    AlphabetOrder,
     OrderByRating,
     SearchBar
 };
