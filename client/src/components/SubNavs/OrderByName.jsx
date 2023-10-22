@@ -11,8 +11,8 @@ function OrderByName() {
 
   return (
     <select onChange={handleOrderByName}>
-      <option value="A-Z">From A to Z</option>
-      <option value="Z-A">From Z to A</option>
+      <option value="A-Z">A to Z</option>
+      <option value="Z-A">Z to A</option>
     </select>
   );
 }

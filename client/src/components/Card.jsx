@@ -4,8 +4,8 @@ import {formatFields} from '../utils/formaters';
 
 function Card( {game} ) {
  const { id, name, image, genres} = game;
+ console.log(genres)
  const genreFor = formatFields(genres);
-  console.log(id)
     return (
       <div className={style.cardContainer} key={id}>
         <NavLink to={`/detail/${id}`}>

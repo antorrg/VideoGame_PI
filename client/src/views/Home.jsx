@@ -11,8 +11,9 @@ import {Cards, NavBar} from '../components/index2';
 
 function Home() {
   const dispatch = useDispatch();
-  const gamesByName = useSelector((state) => state.sortGames);
-  const allGames = useSelector((state) => state.allGames);
+  const gamesByName = useSelector((state) => state.gamesByName);
+  //const allGames = useSelector((state) => state.allGames);
+  const allGames =useSelector((state)=> state.sortGames);
 
   //Segunda opcion:
   const { name } = useParams();

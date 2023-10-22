@@ -1,7 +1,16 @@
-//Componentes:
-import {GET_ALL_GAMES, GET_ALL_GENRES, CREATE_VIDEOGAME, GET_BY_NAME, GET_BY_ID, ORDER_ALPHABET}from './actions-types';
-//Dependencias:
+//Dependencies:
 import axios from 'axios';
+
+//Components:
+import {
+  GET_ALL_GAMES, 
+  GET_ALL_GENRES, 
+  CREATE_VIDEOGAME, 
+  GET_BY_NAME, 
+  GET_BY_ID, 
+  ORDER_ALPHABET,
+  ORDER_GENRE
+}from './actions-types';
 
 export const getAllGames =()=> async (dispatch)=>{
     try {
@@ -10,12 +19,9 @@ export const getAllGames =()=> async (dispatch)=>{
           type:GET_ALL_GAMES,
           payload: response.data,
         });
-      
     } catch (error) {
       alert("Could not found the games selected");
     }  
-  
-    
   }
 
   export const getAllGenres = () => async (dispatch) => {
@@ -38,21 +44,23 @@ export const getAllGames =()=> async (dispatch)=>{
         payload: response.data,
       });
     } catch (error) {
-      console.error('Error fetching game:', error);
+      console.error('Error fetching game', error);
     }
   };
 
   export const getByName = (name) => {
-    return {
+    return (dispatch)=>{
+     dispatch({
       type: GET_BY_NAME,
       payload: name,
-    };
+    })
+    }
   };
-  //export const getAllGames =(name)=> async (dispatch)=>{
+  //export const getByName =(name)=> async (dispatch)=>{
   //   try {
   //     const response = await axios(`http://localhost:3001/games?name=${name}`);
   //       return dispatch({
-  //         type:GET_ALL_GAMES,
+  //         type:GET_BY_NAME,
   //         payload: response.data,
   //       });
       
@@ -74,23 +82,36 @@ export const getAllGames =()=> async (dispatch)=>{
         
       } catch (error) {
         
-        console.error("Error al crear el videojuego:", error);
+        console.error("Error creating the video game:", error);
         
       }
     };
   };
 
   //?@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  //Funciones de ordenamiento:
+  //Sortings functions:
   export const orderAlphabet = (payload) => {
     return{
         type: ORDER_ALPHABET,
         payload,
     }
-}
-
+};
 
 //?@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
+//? Filters:
+// export const getGamesForGenre = (nameGenre) => {
+//   return (dispatch)=>{({
+//     type: ORDER_GENRE,
+//     payload: nameGenre,
+//   });
+//  }
+// };
+export function getGamesForGenre(name) {
+  return (dispatch)=>{({
+    type: ORDER_GENRE,
+    payload:name
+  })
+  };
+}
 
   

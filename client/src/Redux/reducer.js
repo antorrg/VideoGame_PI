@@ -4,7 +4,9 @@ import {
   CREATE_VIDEOGAME, 
   GET_BY_NAME, 
   GET_BY_ID, 
-  ORDER_ALPHABET
+  ORDER_ALPHABET,
+  ORDER_GENRE,
+  
 } from './actions-types'
 
 
@@ -14,7 +16,7 @@ const initialState= {
     allGenres: [],
     gamesByName: [],
     gamesById:[],
-    isLoading: false,
+    loading: false,
     
 }
 
@@ -25,7 +27,6 @@ const reducer= (state= initialState, {type, payload})=>{
                 ...state,
                 allGames: payload,
                 sortGames: payload,
-                isLoading: false,
             }
 
       case GET_ALL_GENRES:
@@ -38,70 +39,68 @@ const reducer= (state= initialState, {type, payload})=>{
             return {
                 ...state,
                 allGames: payload,
-                isLoading:false,
+                sortGames: payload,
             }
             
       case GET_BY_NAME:
             // Filtra los juegos para que coincidan con el nombre buscado
-      const gamesByName = state.allGames.filter((game) => {
+      const gamesByNames = state.allGames.filter((game) => {
         return game.name.toLowerCase().includes(payload.toLowerCase());
       });
       return {
         ...state,
-         sortGames:gamesByName,
+        gamesByName:gamesByNames,
       };
       case GET_BY_ID:
         return {
             ...state,
             gamesById: payload,
         }
-      // case GET_BY_NAME:
-      //   const gamesByName = state.allGames.filter((game) => {
-      //     return game.name.toLowerCase().includes(payload.name.toLowerCase());
-      //   });
-      //   return {
-      //     ...state,
-      //     gamesByName: gamesByName, // Actualiza gamesByName
-      //     sortGames: gamesByName, // Actualiza sortGames
-      //   };
-      
-      // case ORDER_ALPHABET:     
-      // const videogamesOrdered =
-      //   payload === "ASC"
-      //   ? [...state.sortGames].sort(function (a, b) {
-      //       if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-      //       if (b.name.toLowerCase() > a.name.toLowerCase()) return -1;
-      //       return 0;
-      //     })
-      //   : state.allGames.sort(function (a, b) {
-      //       if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
-      //       if (b.name.toLowerCase() > a.name.toLowerCase()) return 1;
-      //       return 0;
-      //     });
+    
+    
       case ORDER_ALPHABET:     
-      const videogamesOrdered =(payload)=>{
-      if(payload === "A-Z"){
-        return{...state.sortGames.sort(function (a, b) {
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-          if (b.name.toLowerCase() > a.name.toLowerCase()) return -1;
-          return 0;
-        })}
+      const videogamesOrdered = (payload) => {
+        console.log(payload)
+        if (payload === A-Z) {
+          return {
+            ...state,
+            sortGames: [...state.sortGames.sort((a, b) => a.name.localeCompare(b.name))],
+          };
+        } else if (payload === Z-A) {
+          return {
+            ...state,
+            sortGames: [...state.sortGames.sort((a, b) => b.name.localeCompare(a.name))],
+          };
         }
-        if(payload === "Z-A"){
-          return{...state.sortGames.sort(function (a, b) {
-            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-            if (b.name.toLowerCase() > a.name.toLowerCase()) return -1;
-            return 0;
-          })}
-        }
-      }   
+      }
+      console.log(videogamesOrdered)
     return {
       ...state,
       sortGames: videogamesOrdered,
+      
     }
     
-       
+    case ORDER_GENRE:
+      //console.log(payload)
+      // let filteredGames=[...state.sortGames];
+      // console.log(filteredGames)
+      // if(payload === "All"){
+      //  filteredGames=[...state.allGames]
+      // }else{
+      //   filteredGames= filteredGames.filter((game)=>game.genres && game.genres.includes(payload))
+      //   console.log(filteredGames)
+      // }
+      // return {
+      //   ...state,
+      //   sortGames: filteredGames,
+      // };
+      case ORDER_GENRE:
+  const gamesWithGenre = state.allGames.filter((game) => game.genres.includes(payload));
 
+  return {
+    ...state,
+    sortGames: gamesWithGenre,
+  };
       default: 
       return {...state};
 

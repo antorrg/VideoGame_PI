@@ -2,8 +2,8 @@ import style from "./styles/NavBar.module.css";
 //import { useState } from "react";
 
 import { NavLink } from "react-router-dom";
-import {OrderByName, SearchBar} from "./SubNavs/index";
-
+import {SearchBar, OrderByName} from "./SubNavs/index";
+import OrderByGenre from "./SubNavs/OrderByGenre";
 export default function NavBar() {
   //const [order, setOrder] = useState("");
 
@@ -15,18 +15,15 @@ export default function NavBar() {
           <button>WelcomePage</button>
         </NavLink>
       </div>
-      <div className={style.linksTitle}>
-        <OrderByName /> {/* Usa el componente OrderByName aquí */}
-      </div>
-      <div className={style.linksTitle}>
-        <OrderByGenre /> {/* Usa el componente OrderByName aquí */}
-      </div>
       <div className={style.linksTitle2}>
-        <OrderByRating />
+        <OrderByName/>
       </div>
-      <div className={style.linksTitle2}>
-        <IsCreated />
+      <div className={style.linksTitle3}>
+        <OrderByGenre/>
       </div>
+      
+     
+      
       <div className={style.linkTitle}>
         <NavLink to="/form">
           <button>CREATE</button>

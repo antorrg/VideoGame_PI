@@ -7,10 +7,12 @@ function Landing() {
     <div className={styles.home}>
       <div className={styles.containerTitle}>
         <h1 className={styles.titleLanding}>Welcome to VIDEOGAMES</h1>
-        <NavLink classname = {styles.pageNavigationButton }to="/home">
-          <button className=''>ENTER</button>
-        </NavLink>
       </div>
+        <div >
+        <NavLink to="/home">
+          <button className={styles.pageNavigationButton }>ENTER</button>
+        </NavLink>
+        </div>
     </div>
   );
 }

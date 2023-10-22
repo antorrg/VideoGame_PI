@@ -4,4 +4,6 @@ export const GET_BY_ID = 'GET_BY_ID';
 export const GET_ALL_GENRES ='GET_ALL_GENRES';
 export const CREATE_VIDEOGAME ='CREATE_VIDEOGAME';
 export const ORDER_ALPHABET ='ORDER_ALPHABET';
+export const ORDER_GENRE = 'ORDER_GENRE';
 export const SET_PAGE = 'SET_PAGE';
+export const LOADING = 'LOADING';

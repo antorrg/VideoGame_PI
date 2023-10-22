@@ -11,17 +11,17 @@ function SearchBar() {
 
   const handleSearch = async () => {
     if (searchTerm.trim() !== "") {
-      // Realiza la búsqueda en el estado con el nombre ingresado
+      // Perform the search in the state with the name entered
       dispatch(getByName(searchTerm));
-      // Navega a la página de inicio con el nombre como parámetro
+      // Navigate to the home page with the name as a parameter
       navigate(`/home/${searchTerm}`);
 
-      // Borra el valor del campo de búsqueda
+      //Delete the value of the search field
       setSearchTerm("");
     } else {
-      // Si no se ingresa un nombre, obtiene todos los juegos
+      // If a name is not entered, get all games
       dispatch(getAllGames());
-      // Navega a la página de inicio
+      // Navigate to the home page
       navigate("/home");
     }
   };
@@ -37,7 +37,7 @@ function SearchBar() {
     <div className={style.searchBar}>
       <input
         type="search"
-        placeholder="Search"
+        placeholder="Search by name..."
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
         onKeyDown={handleKeyPress}
