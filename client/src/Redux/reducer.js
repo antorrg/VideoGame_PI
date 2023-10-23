@@ -35,7 +35,6 @@ const reducer = (state = initialState, { type, payload }) => {
       };
 
     case CREATE_VIDEOGAME:
-      console.log(payload)
       return {
         ...state,
         allGames: payload,
@@ -44,14 +43,14 @@ const reducer = (state = initialState, { type, payload }) => {
       };
 //--------------------------------------------------------------------
     case GET_BY_NAME:
-      // Filtra los juegos para que coincidan con el nombre buscado
-      const gamesByNames = state.allGames.filter((game) => {
+      const gamesByNames = state.sortGames.filter((game) => {
         return game.name.toLowerCase().includes(payload.toLowerCase());
       });
       return {
         ...state,
         gamesByName: gamesByNames,
       };
+//----------------------------------------------------------------------------
     case GET_BY_ID:
       return {
         ...state,
@@ -138,16 +137,3 @@ case ORDER_RATING:
 };
 
 export default reducer;
-
-/*case ORDER:
-            let favoritesOrdered = state.myFavorites.sort((a, b)=>{
-                return payload === "Ascendente" ? a.id - b.id : b.id - a.id
-            })
-            return{
-                ...state,
-                myFavorites: favoritesOrdered
-            }
-
-
-        default: return {...state}
-        */

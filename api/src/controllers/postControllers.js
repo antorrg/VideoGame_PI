@@ -15,7 +15,7 @@ if (!name || !description || !image || !released || !genres || !platforms || rat
   
   } else {
   
-  const genreArray = genres.split(',').map(genre => genre.trim());
+  //const genreArray = genres.split(',').map(genre => genre.trim());
       
         const newGame = await Videogame.create({
           name,
@@ -28,7 +28,7 @@ if (!name || !description || !image || !released || !genres || !platforms || rat
   
         // Buscar los objetos de género correspondientes en la base de datos
         const dbGenres = await Genre.findAll({
-          where: { name: genreArray },
+          where: { name: genres },
         });
   
         // Asociar los géneros al nuevo juego
