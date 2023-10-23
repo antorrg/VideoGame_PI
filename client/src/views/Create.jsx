@@ -103,6 +103,7 @@ export default function Create() {
         if (Object.keys(error).length === 0 && input.genres.length > 0) {
           console.log(input)
           dispatch(createVideogame(input));
+          dispatch(getAllGames());
           setInput({
             name: "",
             description: "",
@@ -112,6 +113,7 @@ export default function Create() {
             rating: "",
             genres: [],
           });
+          
           navigate("/home");
         }
       }

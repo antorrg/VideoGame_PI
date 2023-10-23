@@ -7,7 +7,7 @@ import {
   ORDER_ALPHABET,
   ORDER_GENRE,
   ORDER_RATING,
-  IS_CREATED
+  IS_CREATED,
 } from "./actions-types";
 
 const initialState = {
@@ -37,9 +37,8 @@ const reducer = (state = initialState, { type, payload }) => {
     case CREATE_VIDEOGAME:
       return {
         ...state,
-        allGames: payload,
-        sortGames: payload,
-       
+        //allGames: payload,
+        //sortGames: payload,
       };
 //--------------------------------------------------------------------
     case GET_BY_NAME:
@@ -129,6 +128,7 @@ case ORDER_RATING:
     ...state,
     sortGames: filCreatGames,
   };
+
 
 //!#########################################################
     default:

@@ -1,11 +1,31 @@
   
 .home {
-  background: linear-gradient(127deg, rgba(97,6,145,0.8939950980392157) 30%,
-  rgba(214,45,77,1) 100%);
+  background: linear-gradient(127deg, rgba(97, 6, 145, 0.8939950980392157) 30%, rgba(214, 45, 77, 1) 100%);
   background-size: cover;
-  height: 100vw;
+  height: 100vh; /* Cambiado de 100vw a 100vh para ajustar la altura */
   width: 100vw;
+  position: relative; /* Agregamos posición relativa para posicionar la imagen interna */
 }
+
+.imageContainer {
+  position: absolute; /* Posicionamos absolutamente la imagen dentro del contenedor .home */
+  top: 70%; /* Alineamos verticalmente al centro */
+  left: 50%; /* Alineamos horizontalmente al centro */
+  transform: translate(-50%, -50%); /* Centramos la imagen */
+  width: 100%; /* Establecemos el tamaño deseado para la imagen (60% del tamaño del contenedor) */
+}
+
+/* Añadimos la imagen como fondo del contenedor .image-container */
+.imageContainer {
+  background-image: url('../../assets/videogame.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  width: 50%;
+  height: 50%;
+}
+
 .containerTitle {
   display:flex;
   flex-direction: column;

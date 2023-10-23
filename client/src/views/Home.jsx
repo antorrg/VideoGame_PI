@@ -8,11 +8,11 @@ import { getAllGames, getByName } from "../Redux/actions";
 //Importacion de modulos:
 import style from "./viewStyles/Home.module.css";
 import {Cards, NavBar} from '../components/index2';
+import {Footer} from './index1';
 
 function Home() {
   const dispatch = useDispatch();
   const gamesByName = useSelector((state) => state.gamesByName);
-  //const allGames = useSelector((state) => state.allGames);
   const allGames =useSelector((state)=> state.sortGames);
 
   //Segunda opcion:
@@ -20,6 +20,7 @@ function Home() {
  
 
   //Para Paginacion:
+  
   const [currentPage, setCurrentPage] = useState(1);
   const gamesPerPage = 15; // Número de juegos por página
 
@@ -55,12 +56,14 @@ console.log(allGames)
   return (
     <div className={style.home}>
       <NavBar />
+      
       <div className={style.pageNavigation}>
         <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
         <span>{currentPageDisplay}</span>
         <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
       </div>
        <Cards  allGames={name ? gamesByName : allGames}  currentPage={currentPage} gamesPerPage={gamesPerPage}/>
+       <Footer/>
     </div>
   );
 }

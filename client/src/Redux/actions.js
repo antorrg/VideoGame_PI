@@ -11,7 +11,7 @@ import {
   ORDER_ALPHABET,
   ORDER_GENRE,
   ORDER_RATING,
-  IS_CREATED
+  IS_CREATED,
 }from './actions-types';
 
 export const getAllGames =()=> async (dispatch)=>{
@@ -105,4 +105,3 @@ export const orderbyRating = (rating)=>{
     payload,
   }
  }
-  
