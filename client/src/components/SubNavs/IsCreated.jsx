@@ -1,5 +1,6 @@
 import { useDispatch} from "react-redux";
 import { isCreated } from "../../Redux/actions";
+import style from '../styles/SubNavs.module.css'
 
 export default function IsCreated() {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export default function IsCreated() {
  
   return (
     <div>
-      <select onChange={itIsCreated}>
+      <select onChange={itIsCreated} className={style.stylSelect }>
       <option value="All">Is Created ?</option>
       <option value="true">Created</option>
       <option value="false">Import</option>

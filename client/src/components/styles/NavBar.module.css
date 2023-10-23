@@ -87,5 +87,21 @@
  font-size: 2em;
  color: #4ee807;;
 
+ 
 }
 
+
+  
+.pageNavbutton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.pageNavbutton:disabled {
+  background-color: #ccc;
+  cursor: pointer;
+}

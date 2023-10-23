@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {formatFields} from '../utils/formaters';
 import {getById} from '../Redux/actions';
 
+
 function Detail() {
   const dispatch = useDispatch();
   const gamesById = useSelector((state) => state.gamesById);
@@ -12,7 +13,7 @@ function Detail() {
   
   
   const { id } = useParams();
-  console.log(id);
+
   //const location = useLocation;
   // axios(`http://localhost:3001/${id}`).then(({ data }) => {
   //   if (data.name) {
@@ -22,7 +23,7 @@ function Detail() {
   //   }
   // });
   
-  //Llamado al Server
+
   useEffect(() => {
     dispatch(getById(id));
   },[dispatch,id]);
@@ -35,10 +36,9 @@ function Detail() {
  
   let genresFil = formatFields(isgame.genres);
   let platforFil = formatFields(isgame.platforms);
-  console.log(isgame);
-  console.log(isgame.genres)
   
   return (
+    <div classname ={style.home}>
     <div className={style.cont} id={id}>
       <div>
         <img className={style.image} src={isgame?.image} alt={isgame?.name} />
@@ -56,6 +56,7 @@ function Detail() {
         <h3>Released: {isgame?.released}</h3>
         <h3>Rating: {isgame?.rating}</h3>
       </div>
+    </div>
     </div>
   );
 }

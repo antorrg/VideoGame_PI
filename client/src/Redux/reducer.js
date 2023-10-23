@@ -35,10 +35,12 @@ const reducer = (state = initialState, { type, payload }) => {
       };
 
     case CREATE_VIDEOGAME:
+      console.log(payload)
       return {
         ...state,
         allGames: payload,
         sortGames: payload,
+       
       };
 //--------------------------------------------------------------------
     case GET_BY_NAME:

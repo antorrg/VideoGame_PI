@@ -41,8 +41,9 @@ function SearchBar() {
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
         onKeyDown={handleKeyPress}
+        className={style.stylSelect }
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch} className={style.pageNavbutton  }>Search</button>
     </div>
   );
 }

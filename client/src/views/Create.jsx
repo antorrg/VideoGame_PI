@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createVideogame,  getAllGenres, getAllGames } from "../Redux/actions";
 import validate from '../utils/validate';
+import { platforms } from "../utils/platSource";
 
 
 
@@ -13,12 +14,12 @@ export default function Create() {
   const dispatch = useDispatch();
   const genres = useSelector((state) => state.allGenres);
   const all = useSelector((state) => state.allGames);
-  const history = useNavigate();
   const [error, setError] = useState({});
+  const navigate = useNavigate();
 
   const [input, setInput] = useState({
     name: "",
-    background_image: "",
+    image: "",
     description: "",
     released: "",
     rating: 0,
@@ -31,34 +32,21 @@ export default function Create() {
     dispatch(getAllGenres());
   }, [dispatch]);
 
-  const platforms = [
-    "PC",
-    "PlayStation 5",
-    "Xbox One",
-    "PlayStation 4",
-    "Xbox Series S/X",
-    "Nintendo Switch",
-    "iOS",
-    "Android",
-    "Nintendo 3DS",
-    "Nintendo DS",
-    "Nintendo DSi",
-    "macOS",
-  ];
+  
 
   const handleRefresh = () => {
     dispatch(getAllGames());
   };
 
-  function handleChange(e) {
+  function handleChange(event) {
     setInput({
       ...input,
-      [e.target.name]: e.target.value, //to fill the state with each prop
+      [event.target.name]: event.target.value, //to fill the state with each prop
     });
     setError(
       validate({
         ...input,
-        [e.target.value]: e.target.value,
+        [event.target.value]: event.target.value,
       })
     );
   }
@@ -96,10 +84,12 @@ export default function Create() {
       platforms: input.platforms.filter((platform) => platform !== p),
     });
   }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    let avoidRepetion = all.filter((n) => n.name === input.name);
+  
+  function handleSubmit(event) {
+    console.log(input)
+    console.log(event)
+    event.preventDefault();
+    let avoidRepetion = all.filter((name) => name.name === input.name);
     if (avoidRepetion.length !== 0) {
       alert("Please choose another name, it already exists");
     } else {
@@ -113,17 +103,16 @@ export default function Create() {
         if (Object.keys(error).length === 0 && input.genres.length > 0) {
           console.log(input)
           dispatch(createVideogame(input));
-          alert("Videogame successfully created");
           setInput({
             name: "",
-            background_image: "",
             description: "",
+            platforms: [],
+            image: "",
             released: "",
             rating: "",
-            platforms: [],
             genres: [],
           });
-          history.push("/home");
+          navigate("/home");
         }
       }
     }
@@ -136,6 +125,7 @@ export default function Create() {
           <h1 className={style.title}> Create your Videogame </h1>
           <div className={style.boxCreate}>
             <div className={style.left}>
+          
             <div className={style.home}>
               <NavLink
                 to="/home"
@@ -145,6 +135,7 @@ export default function Create() {
                 <button className={style.back}> CANCEL </button>
               </NavLink>
             </div>
+
               <div className={style.group}>
                 <input
                   type="text"
@@ -161,14 +152,14 @@ export default function Create() {
               <div className={style.group}>
                 <input
                   type="text"
-                  value={input.background_image}
-                  name="background_image"
+                  value={input.image}
+                  name="image"
                   onChange={handleChange}
                   className={style.input}
                 />
                 <label className={style.label}> Add an image URL</label>
-                {error.background_image && (
-                  <p className={style.error}>{error.background_image}</p>
+                {error.image && (
+                  <p className={style.error}>{error.image}</p>
                 )}
               </div>
 
@@ -290,6 +281,7 @@ export default function Create() {
             </div>
           </div>
 
+          
           <div>
             <button onSubmit={handleSubmit} className={style.submit}>
               CREATE VIDEOGAME

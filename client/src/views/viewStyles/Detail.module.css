@@ -1,3 +1,10 @@
+.home {
+    background: linear-gradient(127deg, rgba(97,6,145,0.8939950980392157) 30%,
+    rgba(214,45,77,1) 100%);
+    background-size: cover;
+    height: 100vw;
+    width: 100vw;
+  }  
 .cont{
     border: 1px solid blue;
     border-radius:  0.5rem;

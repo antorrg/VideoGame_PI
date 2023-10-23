@@ -1,7 +1,7 @@
+import style from '../styles/SubNavs.module.css'
 import {useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGenres, getGamesForGenre } from "../../Redux/actions";
-
 
 
 export default function OrderByGenre() {
@@ -18,7 +18,7 @@ export default function OrderByGenre() {
   //?----------------------------------------------------------------------------------
   return (
     <div>
-      <select className="" onChange={(event) => onFilterGen(event)}>
+      <select className={style.stylSelect} onChange={(event) => onFilterGen(event)}>
         <option value="All">
           {''}
           Filter by Genre{" "}

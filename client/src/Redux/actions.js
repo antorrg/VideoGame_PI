@@ -59,24 +59,21 @@ export const getAllGames =()=> async (dispatch)=>{
     }
   };
   
-   
   export const createVideogame = (payload) => {
     return async (dispatch) => {
       try {
-        const data = await axios.post("http://localhost:3001/post", payload); 
-        dispatch({
+        const data = await axios.post("http://localhost:3001/post", payload);
+        return dispatch({
           type: CREATE_VIDEOGAME,
-          payload: data.data, 
+          payload: data,
         });
-        
       } catch (error) {
-        
-        console.error("Error creating the video game:", error);
-        
+        alert("Could not create the game");
       }
     };
   };
 
+ 
 
 //?@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //? Sortings functions and Filters:

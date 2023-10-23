@@ -10,7 +10,7 @@ export default function NavBar() {
       <h2 className={style.homeTitle}>Video Games</h2>
       <div className={style.linksTitle}>
         <NavLink to="/">
-          <button>WelcomePage</button>
+          <button className={style.pageNavbutton}>WelcomePage</button>
         </NavLink>
       </div>
       <div className={style.linksTitle2}>
@@ -21,8 +21,8 @@ export default function NavBar() {
       </div>
       
       <div className={style.linkTitle}>
-        <NavLink to="/form">
-          <button>CREATE</button>
+        <NavLink to="/form" >
+          <button className={style.pageNavbutton}>Create</button>
         </NavLink>
       </div>
       <div className={style.linkTitle2}>

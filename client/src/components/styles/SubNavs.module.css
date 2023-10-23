@@ -1,0 +1,25 @@
+/* Aplica el estilo a los select con la clase "styled-select" */
+.stylSelect {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+  } 
+  
+  /* Estilo para los select deshabilitados */
+  .stylSelect:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Estilo para el texto dentro de los select */
+  .stylSelect option {
+    background-color: #5594d7;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000; /* Cambia el color del texto dentro del select según tus preferencias */
+  }
+  

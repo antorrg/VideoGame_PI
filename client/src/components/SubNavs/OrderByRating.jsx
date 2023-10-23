@@ -1,3 +1,4 @@
+import style from '../styles/SubNavs.module.css'
 import { useDispatch} from "react-redux";
 import { orderbyRating } from "../../Redux/actions";
 
@@ -10,7 +11,7 @@ export default function OrderByRating() {
  
   return (
     <div>
-      <select onChange={filterForRating}>
+      <select onChange={filterForRating} className={style.stylSelect }>
       <option value="All">Order by Rating</option>
       <option value="ASC">Lowest to Highest</option>
       <option value="DES">Highest to Lowest</option>
