@@ -8,7 +8,6 @@ import { getAllGames, getByName } from "../Redux/actions";
 //Importacion de modulos:
 import style from "./viewStyles/Home.module.css";
 import {Cards, NavBar} from '../components/index2';
-import {Footer} from './index1';
 
 function Home() {
   const dispatch = useDispatch();
@@ -52,7 +51,7 @@ function Home() {
     }
     // ...
   }, [dispatch, name]);
-console.log(allGames)
+
   return (
     <div className={style.home}>
       <NavBar />
@@ -63,7 +62,7 @@ console.log(allGames)
         <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
       </div>
        <Cards  allGames={name ? gamesByName : allGames}  currentPage={currentPage} gamesPerPage={gamesPerPage}/>
-       <Footer/>
+      
     </div>
   );
 }

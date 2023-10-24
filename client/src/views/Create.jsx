@@ -122,19 +122,18 @@ export default function Create() {
 
   return (
     <div className={style.div}>
-      <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
-        <div className={style.container}>
+      <form className={style.form} onSubmit={(event) => handleSubmit(event)}>
+        <div >
           <h1 className={style.title}> Create your Videogame </h1>
           <div className={style.boxCreate}>
-            <div className={style.left}>
-          
+            <div>
             <div className={style.home}>
               <NavLink
                 to="/home"
                 style={{ textDecoration: "none" }}
                 onClick={(event) => handleRefresh(event)}
               >
-                <button className={style.back}> CANCEL </button>
+                <button className={style.back}> Cancel </button>
               </NavLink>
             </div>
 
@@ -144,7 +143,7 @@ export default function Create() {
                   value={input.name}
                   name="name"
                   autoComplete="off"
-                  onChange={(e) => handleChange(e)}
+                  onChange={(event) => handleChange(event)}
                   className={style.input}
                 />{" "}
                 <label className={style.label}> Name: </label>
@@ -201,27 +200,27 @@ export default function Create() {
             <div className={style.right}>
               <div className={style.group}>
                 <select
-                  onChange={(e) => handleSelectPlatform(e)}
+                  onChange={(event) => handleSelectPlatform(event)}
                   className={style.select}
                 >
                   <option className={style.option} value="" disabled hidden>
                     Choose Platforms..
                   </option>
-                  {platforms.map((p) => (
-                    <option key={p} value={p} className={style.option}>
-                      {p}
+                  {platforms.map((platform) => (
+                    <option key={platform} value={platform} className={style.option}>
+                      {platform}
                     </option>
                   ))}
                 </select>
                 <label className={style.label}>Platforms: </label>
-                {input.platforms.map((p) => (
+                {input.platforms.map((platform) => (
                   <div className={style.map}>
-                    <div className={style.option_title}>{p}</div>
+                    <div className={style.option_title}>{platform}</div>
                     <button
                       className={style.btnx}
-                      onClick={() => handleCleanPlatform(p)}
-                      key={p}
-                      value={p}
+                      onClick={() => handleCleanPlatform(platform)}
+                      key={platform}
+                      value={platform}
                     >
                       <span className={style.x}>X</span>
                     </button>
@@ -231,7 +230,7 @@ export default function Create() {
 
               <div className={style.group}>
                 <select
-                  onChange={(e) => handleSelectGenre(e)}
+                  onChange={(event) => handleSelectGenre(event)}
                   className={style.select}
                 >
                   <option className={style.option} value="" disabled hidden>
@@ -272,7 +271,7 @@ export default function Create() {
                   type="text"
                   value={input.description}
                   name="description"
-                  placeholder="Your videogame it's about..."
+                  placeholder="Enter your text here..."
                   onChange={handleChange}
                 />
                 <label className={style.description}> Description: </label>
@@ -286,7 +285,7 @@ export default function Create() {
           
           <div>
             <button onSubmit={handleSubmit} className={style.submit}>
-              CREATE VIDEOGAME
+              Create Videogame
             </button>
           </div>
         </div>

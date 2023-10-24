@@ -22,6 +22,10 @@
     align-items: center;
     margin-bottom: 1rem;
   }
+  .back:hover{
+    background: transparent;
+    cursor: pointer;
+  }
   
   .pageNavigation button {
     background-color: #007bff;

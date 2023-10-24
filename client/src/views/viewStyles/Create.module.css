@@ -15,30 +15,30 @@
   }
   
   .form {
-    background: bisque;
-    padding: 45px 0;
-    border-radius: 10px;
-    box-shadow: 
-    0 0 5px rgb(249, 240, 250),
-    0 0 10px rgb(247, 210, 250),
-    0 0 15px rgb(245, 169, 250),
-    0 0 20px rgb(234, 129, 248),
-    0 0 25px rgb(225, 86, 250),
-    0 0 30px rgb(233, 22, 248);
-    height: auto;
-    display: inline-block;
-    margin-top: 20px;
-    margin-bottom: 2%;
-  
-  }
-  
-  .container {
-    width: 100%;
+    border: 1.5px solid blue;
+    border-radius:  0.5rem;
+    width: fit-content;
+    font-weight: 600;
     margin: auto;
+    padding: 1 rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: left;
+    background-color: bisque;
+    
+    
+    .descriptionTextarea{
+      width: 200px;
+        overflow:auto;
+    }    
   }
+  
+  
   .boxCreate{
     display: flex;
     flex-direction: row;
+   
   }
   .group {
     position: relative;
@@ -130,35 +130,29 @@
   .submit{
     font-family: 'Teko', serif;
     letter-spacing: 2px;
-    background: linear-gradient(to right, #dc24e2, #3961e6);
+    background: #007bff;
     border: 1px solid;
     border-radius: 8px;
     display: block;
     width: 40%;
     margin: 10px auto;
-    color: #000;
+    color: #fff;
     height: 40px;
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    box-shadow: 
-    0 0 5px rgb(255 240 243),
-    0 0 10px rgb(255 204 213),
-    0 0 15px rgb(255, 179, 255),
-    0 0 20px rgb(251, 143, 255),
-    0 0 25px rgb(246, 117, 255),
-    0 0 30px rgb(234, 77, 255);
+    
     margin-bottom: 5%;
   }
   .submit:hover{
-    background: transparent;
+    background: #d4dbeb;
     cursor: pointer;
   }
   .select {
-    background: linear-gradient(to right, #dc55e0, #3961e6);
+    background: #007bff;
     box-shadow: 
     0 0 5px rgb(255 240 243);
-    color: #000;
+    color: #fff;
     padding: 7px;
     font-size: 16px;
     appearance: button;
@@ -171,7 +165,7 @@
   
   .select .option {
     padding: 30px;
-    color: #dc55e0;
+    color: #fff;
   }
   
   .error {
@@ -234,30 +228,22 @@
     display: block;
     width: 30%;
     margin: 10px auto;
-    color: #000;
+    color: #fff;
     height: 40px;
     font-size: 16px;
     cursor: pointer;
-    box-shadow: 
-    0 0 5px rgb(255 240 243),
-    0 0 10px rgb(255 204 213),
-    0 0 15px rgb(255, 179, 255),
-    0 0 20px rgb(251, 143, 255),
-    0 0 25px rgb(246, 117, 255),
-    0 0 30px rgb(234, 77, 255);
+   
     font-weight: 400;
-    background: linear-gradient(to right, #dc24e2, #3961e6);
+    background-color: #007bff;
     border: 1px solid;
   }
   .back:hover{
-    background: transparent;
+    background: #d4dbeb;
     cursor: pointer;
   }
   
   @media screen and (max-width: 800px){
-    .container{
-      width: 98%!important;
-    }
+   
     .form{
       display: flex!important;
       flex-direction: column!important;

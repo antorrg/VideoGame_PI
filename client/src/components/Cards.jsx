@@ -7,7 +7,6 @@ function Cards({ allGames, allGenres, gamesPerPage, currentPage }) {
   const indexOfFirstGame = indexOfLastGame - gamesPerPage;
   const currentGames = allGames.slice(indexOfFirstGame, indexOfLastGame);
 
-  console.log(allGames);
   return (
     <div className={style.cardList}>
       {currentGames.map((game) => (

@@ -17,7 +17,7 @@
   
   /* Estilo para el texto dentro de los select */
   .stylSelect option {
-    background-color: #5594d7;
+    background-color: #ccc;
     font-size: 12px;
     font-weight: bold;
     color: #000; /* Cambia el color del texto dentro del select según tus preferencias */
