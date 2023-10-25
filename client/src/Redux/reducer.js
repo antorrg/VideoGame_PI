@@ -59,7 +59,7 @@ const reducer = (state = initialState, { type, payload }) => {
       case ORDER_ALPHABET:
    let sortedGames = null;
    if (payload === "All") {
-     sortedGames = [...state.allGames];
+     sortedGames = [...state.sortGames];
    } else if (payload === "A-Z") {
      sortedGames = [...state.sortGames]; 
      sortedGames.sort(function (a, b) {
@@ -68,7 +68,7 @@ const reducer = (state = initialState, { type, payload }) => {
        return 0;
      });
    } else {
-     sortedGames = [...state.allGames];
+     sortedGames = [...state.sortGames];
      sortedGames.sort(function (a, b) {
        if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
        if (b.name.toLowerCase() > a.name.toLowerCase()) return 1;
@@ -80,7 +80,7 @@ const reducer = (state = initialState, { type, payload }) => {
      sortGames: sortedGames,
    };
 
-//------------------------------------------------------------------------
+//--------------------------------------------------------------------------
     case ORDER_GENRE:
       let filteredGames = [...state.sortGames];
       if (payload === "All") {

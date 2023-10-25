@@ -1,8 +1,16 @@
 import style from "./viewStyles/Landing.module.css";
 import { NavLink } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { getAllGames, getAllGenres } from "../Redux/actions";
+import { useEffect } from "react";  
 
 function Landing() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllGames());
+    dispatch(getAllGenres());
+  },[dispatch])
+
   return (
     <div className={style.home}>
       <div className={style.imageContainer}>

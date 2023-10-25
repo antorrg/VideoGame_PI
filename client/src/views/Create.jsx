@@ -15,6 +15,7 @@ export default function Create() {
   const genres = useSelector((state) => state.allGenres);
   const all = useSelector((state) => state.allGames);
   const [error, setError] = useState({});
+ 
   const navigate = useNavigate();
 
   const [input, setInput] = useState({
@@ -71,23 +72,21 @@ export default function Create() {
     }
   }
 
-  function handleCleanGenre(g) {
+  function handleCleanGenre(gen) {
     setInput({
       ...input,
-      genres: input.genres.filter((genre) => genre !== g),
+      genres: input.genres.filter((genre) => genre !== gen),
     });
   }
 
-  function handleCleanPlatform(p) {
+  function handleCleanPlatform(plat) {
     setInput({
       ...input,
-      platforms: input.platforms.filter((platform) => platform !== p),
+      platforms: input.platforms.filter((platform) => platform !== plat),
     });
   }
   
-  function handleSubmit(event) {
-    console.log(input)
-    console.log(event)
+  async function handleSubmit(event) {
     event.preventDefault();
     let avoidRepetion = all.filter((name) => name.name === input.name);
     if (avoidRepetion.length !== 0) {
@@ -101,9 +100,9 @@ export default function Create() {
         alert("All fields must be completed");
       } else {
         if (Object.keys(error).length === 0 && input.genres.length > 0) {
-          console.log(input)
-          dispatch(createVideogame(input));
-          dispatch(getAllGames());
+         
+          await dispatch(createVideogame(input));
+          await dispatch(getAllGames());
           setInput({
             name: "",
             description: "",
@@ -115,6 +114,8 @@ export default function Create() {
           });
           
           navigate("/home");
+         
+          
         }
       }
     }
@@ -190,6 +191,7 @@ export default function Create() {
                   max="5"
                   value={input.rating}
                   name="rating"
+                  step= "0.01"
                   onChange={handleChange}
                 />
                 <label className={style.label}>Rating: </label>
@@ -281,7 +283,6 @@ export default function Create() {
               </div>
             </div>
           </div>
-
           
           <div>
             <button onSubmit={handleSubmit} className={style.submit}>

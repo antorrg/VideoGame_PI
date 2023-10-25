@@ -30,7 +30,7 @@ const getAllGames = async ()=> {
     //Info de la API:
   
     const gamesAPI = [];
-    for(let page = 1; page<=5; page++){
+    for(let page = 1; page<=1; page++){
     const url = `${URL}games?${API_KEY}&page=${page}`
 
     const infoApi = (await axios.get(url)).data;
