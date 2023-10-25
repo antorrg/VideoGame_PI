@@ -15,7 +15,7 @@ export default function OrderByGenre() {
     dispatch(getAllGenres());
   }, [dispatch]);
   
-  //?----------------------------------------------------------------------------------
+
   return (
     <div>
       <select className={style.stylSelect} onChange={(event) => onFilterGen(event)}>

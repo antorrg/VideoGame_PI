@@ -39,7 +39,7 @@ export default function Create() {
     dispatch(getAllGames());
   };
 
-  function handleChange(event) {
+  function handleChange(event) {  
     setInput({
       ...input,
       [event.target.name]: event.target.value, //to fill the state with each prop

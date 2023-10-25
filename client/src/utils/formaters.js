@@ -12,6 +12,3 @@ const formatFields = (data) => {
 export {
     formatFields
 };
-
-
-//const genreToRender = game.genre.toLowerCase();

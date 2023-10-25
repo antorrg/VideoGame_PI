@@ -8,6 +8,7 @@ import {
   ORDER_GENRE,
   ORDER_RATING,
   IS_CREATED,
+  CLEAN_STATE,
 } from "./actions-types";
 
 const initialState = {
@@ -16,7 +17,6 @@ const initialState = {
   allGenres: [],
   gamesByName: [],
   gamesById: [],
-  loading: false,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -37,29 +37,29 @@ const reducer = (state = initialState, { type, payload }) => {
     case CREATE_VIDEOGAME:
       return {
         ...state,
-        //allGames: payload,
-        //sortGames: payload,
+        
       };
-//--------------------------------------------------------------------
+      
     case GET_BY_NAME:
-      const gamesByNames = state.sortGames.filter((game) => {
+      const gamesByNames = state.allGames.filter((game) => {
         return game.name.toLowerCase().includes(payload.toLowerCase());
       });
       return {
         ...state,
         gamesByName: gamesByNames,
+        sortGames: gamesByNames,
       };
-//----------------------------------------------------------------------------
+
     case GET_BY_ID:
       return {
         ...state,
         gamesById: payload,
       };
-//------------------------------------------------------------------------------------
+
       case ORDER_ALPHABET:
    let sortedGames = null;
    if (payload === "All") {
-     sortedGames = [...state.sortGames];
+     sortedGames = [...state.allGames];
    } else if (payload === "A-Z") {
      sortedGames = [...state.sortGames]; 
      sortedGames.sort(function (a, b) {
@@ -80,7 +80,7 @@ const reducer = (state = initialState, { type, payload }) => {
      sortGames: sortedGames,
    };
 
-//--------------------------------------------------------------------------
+
     case ORDER_GENRE:
       let filteredGames = [...state.sortGames];
       if (payload === "All") {
@@ -94,7 +94,7 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         sortGames: filteredGames,
       };
-//--------------------------------------------------------------------------
+
 case ORDER_RATING:
   let ratinGames = null;
    if (payload === "All") {
@@ -111,12 +111,12 @@ case ORDER_RATING:
     ...state,
     sortGames: ratinGames,
   };
-//----------------------------------------------------------
+
  case IS_CREATED:
   const createdInDb = payload === "true" ? true : payload === "false" ? false : null;
 
   if (createdInDb === null) {
-    // Si payload es "All," muestra todos los juegos sin filtrar
+    
     return {
       ...state,
       sortGames: state.allGames,
@@ -129,10 +129,15 @@ case ORDER_RATING:
     sortGames: filCreatGames,
   };
 
+  case CLEAN_STATE:
+    return{
+      ...state,
+      gamesById:[],
+    }
 
-//!#########################################################
-    default:
-      return { ...state };
+  default:
+    return { ...state };
+
   }
 };
 

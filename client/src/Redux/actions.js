@@ -12,6 +12,7 @@ import {
   ORDER_GENRE,
   ORDER_RATING,
   IS_CREATED,
+  CLEAN_STATE,
 }from './actions-types';
 
 export const getAllGames =()=> async (dispatch)=>{
@@ -73,11 +74,6 @@ export const getAllGames =()=> async (dispatch)=>{
     };
   };
 
- 
-
-//?@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//? Sortings functions and Filters:
-
 export const orderAlphabet = (payload) => {
   return{
       type: ORDER_ALPHABET,
@@ -102,6 +98,12 @@ export const orderbyRating = (rating)=>{
  export const isCreated = (payload)=>{
   return{
     type:IS_CREATED,
+    payload,
+  }
+ }
+ export const cleanState =(payload)=>{
+  return{
+    type: CLEAN_STATE,
     payload,
   }
  }

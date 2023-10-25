@@ -8,3 +8,4 @@ export const ORDER_GENRE = 'ORDER_GENRE';
 export const ORDER_RATING= 'ORDER_RATING';
 export const IS_CREATED = 'IS_CREATED';
 export const LOADING = 'LOADING';
+export const CLEAN_STATE='CLEAN_STATE';

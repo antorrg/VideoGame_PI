@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { formatFields } from "../utils/formaters";
-import { getById } from "../Redux/actions";
+import { cleanState, getById } from "../Redux/actions";
 
 function Detail() {
   const dispatch = useDispatch();
@@ -11,19 +11,13 @@ function Detail() {
 
   const { id } = useParams();
 
-  //const location = useLocation;
-  // axios(`http://localhost:3001/${id}`).then(({ data }) => {
-  //   if (data.name) {
-  //     setIsgame(data);
-  //   } else {
-  //     window.alert("Error fetching game");
-  //   }
-  // });
-
   useEffect(() => {
     dispatch(getById(id));
   }, [dispatch, id]);
 
+  const handleRefresh = () => {
+    dispatch(cleanState());
+  };
   const isgame = gamesById; // Obtenemos el juego por su id
 
   let genresFil = formatFields(isgame.genres);
@@ -37,7 +31,7 @@ function Detail() {
         </div>
         <div className={style.text}>
           <h1> {isgame?.name}</h1>
-          <NavLink to={`/home`}>
+          <NavLink to={`/home`} onClick ={handleRefresh}>
             <h3>Return to Home:</h3>
           </NavLink>
           <h3>Genres: {genresFil}</h3>

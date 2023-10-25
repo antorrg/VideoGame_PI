@@ -4,16 +4,18 @@
     flex-direction: column;
     background-color:bisque;
     border: 1px solid grey;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 25px;
     cursor: pointer;
     -moz-osx-font-smoothing: grayscale;
     backface-visibility: hidden;
     transform: translateZ(0);
     transition: transform 0.25s ease-out;
+    z-index:1;
 }
 .cardContainer:hover {
-    transform: scale(1.05);
+    transform: scale(1.15);
+    z-index:2;
 }
 .card {
     width: 300px;

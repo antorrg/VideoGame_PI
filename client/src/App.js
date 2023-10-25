@@ -4,12 +4,13 @@ import {Routes, Route} from 'react-router-dom';
  import {Landing, Detail, Home, Create} from './views/index1';
 
 
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      
+     
       <Routes>
           <Route path='/' element={<Landing />}></Route>
           <Route exact path='/home' element={<Home />}></Route>
@@ -18,6 +19,7 @@ function App() {
           <Route path='/form' element={<Create/>}></Route>
           
         </Routes>
+       
 
     </div>
   );

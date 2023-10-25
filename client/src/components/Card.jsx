@@ -4,7 +4,7 @@ import {formatFields} from '../utils/formaters';
 
 function Card( {game} ) {
  const { id, name, image, genres} = game;
- console.log(genres)
+
  const genreFor = formatFields(genres);
 
     return (
@@ -22,9 +22,3 @@ function Card( {game} ) {
 }
 
 export default Card;
-
-
-// <img src={imageUrl} alt="Image not found." />
-// {image ? (
- // <img src={image} alt="Image not found." />
-//  ): (<img alt="default" src={videogame} />)}
