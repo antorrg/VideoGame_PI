@@ -17,6 +17,8 @@ const initialState = {
   allGenres: [],
   gamesByName: [],
   gamesById: [],
+  stateSwitched:false,
+  previousState:[],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -26,6 +28,8 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         allGames: payload,
         sortGames: payload,
+        stateSwitched:false,
+        previousState: payload,
       };
 
     case GET_ALL_GENRES:
@@ -48,12 +52,15 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         gamesByName: gamesByNames,
         sortGames: gamesByNames,
+        stateSwitched:true,
+        previousState: gamesByNames,
       };
 
     case GET_BY_ID:
       return {
         ...state,
         gamesById: payload,
+       
       };
 
       case ORDER_ALPHABET:
@@ -77,25 +84,31 @@ const reducer = (state = initialState, { type, payload }) => {
    }
    return {
      ...state,
+     gamesByName: sortedGames,
      sortGames: sortedGames,
    };
 
-
+   
     case ORDER_GENRE:
-      let filteredGames = [...state.sortGames];
+      let fixedState = state.stateSwitched ? [...state.previousState] : [...state.allGames];
+      let changingState = state.stateSwitched ?  [...state.gamesByName] :[...state.allGames];
+      let filteredGames = changingState;
       if (payload === "All") {
-        filteredGames = [...state.allGames];
+        filteredGames = fixedState;
       } else {
-        filteredGames = state.allGames.filter((game) =>
+        filteredGames = changingState.filter((game) =>
           game.genres.includes(payload)
         );
       }
       return {
         ...state,
+        gamesByName:filteredGames,
         sortGames: filteredGames,
+        
       };
-
-case ORDER_RATING:
+       
+  
+  case ORDER_RATING:
   let ratinGames = null;
    if (payload === "All") {
      ratinGames = [...state.allGames];
@@ -109,6 +122,7 @@ case ORDER_RATING:
   }
   return {
     ...state,
+    gamesByName: ratinGames,
     sortGames: ratinGames,
   };
 
@@ -119,6 +133,7 @@ case ORDER_RATING:
     
     return {
       ...state,
+      gamesByName:state.allGames,
       sortGames: state.allGames,
     };
   }
@@ -126,6 +141,7 @@ case ORDER_RATING:
   const filCreatGames = state.allGames.filter((game) => game.createdInDb === createdInDb);
   return {
     ...state,
+    gamesByName:filCreatGames,
     sortGames: filCreatGames,
   };
 
