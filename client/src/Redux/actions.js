@@ -13,6 +13,8 @@ import {
   ORDER_RATING,
   IS_CREATED,
   CLEAN_STATE,
+  GET_BY_NAME_FROM_API,
+  RETURN_HOME
 }from './actions-types';
 
 export const getAllGames =()=> async (dispatch)=>{
@@ -51,14 +53,33 @@ export const getAllGames =()=> async (dispatch)=>{
     }
   };
 
+
+
   export const getByName = (name) => {
-    return (dispatch)=>{
-     dispatch({
-      type: GET_BY_NAME,
-      payload: name,
-    })
-    }
+    return async (dispatch) => {
+      try {
+        // Realiza una petición a la API local usando Axios
+        const response = await axios.get(`http://localhost:3001/games?name=${name}`);
+        const gamesFromApi = response.data; // Suponiendo que la respuesta contiene los juegos filtrados.
+  
+        // Realiza el primer dispatch con el resultado de la búsqueda en la API.
+        dispatch({
+          type: GET_BY_NAME_FROM_API,
+          payload: gamesFromApi,
+        });
+  
+        // Realiza el segundo dispatch con el nombre.
+        dispatch({
+          type: GET_BY_NAME,
+          payload: name,
+        });
+      } catch (error) {
+        // Maneja los errores aquí si es necesario
+        alert('Error al obtener datos desde la API:', error);
+      }
+    };
   };
+  
   
   export const createVideogame = (payload) => {
     return async (dispatch) => {
@@ -80,6 +101,28 @@ export const orderAlphabet = (payload) => {
       payload,
   }
 };
+
+// export const getGamesForGenre = (name) => {
+//   return async (dispatch) => {
+//     // Simula una espera de 3 segundos antes de verificar si se encontraron juegos.
+//     await new Promise((resolve) => setTimeout(resolve, 1000));
+
+//     // Supongamos que tienes una función o un selector para obtener los juegos del género.
+//     const games = getGamesForGenre(name);
+
+//     if (games.length === 0) {
+//       // No se encontraron juegos para el género después de 3 segundos.
+//       alert("No se encontraron juegos para este género");
+//     } else {
+//       // Actualiza el estado de Redux con los juegos encontrados.
+//       dispatch({
+//         type: ORDER_GENRE,
+//         payload: name,
+//       });
+//     }
+//   };
+// };
+
 
 export const getGamesForGenre = (name) =>{
   return {
@@ -104,6 +147,13 @@ export const orderbyRating = (rating)=>{
  export const cleanState =(payload)=>{
   return{
     type: CLEAN_STATE,
+    payload,
+  }
+ }
+
+ export const returnHome =(payload)=>{
+  return{
+    type: RETURN_HOME,
     payload,
   }
  }

@@ -9,6 +9,9 @@ import {
   ORDER_RATING,
   IS_CREATED,
   CLEAN_STATE,
+  GET_BY_NAME_FROM_API,
+  RETURN_HOME
+  
 } from "./actions-types";
 
 const initialState = {
@@ -44,17 +47,56 @@ const reducer = (state = initialState, { type, payload }) => {
         
       };
       
+    // case GET_BY_NAME:
+    //   const gamesByNames = state.allGames.filter((game) => {
+    //     return game.name.toLowerCase().includes(payload.toLowerCase());
+    //   });
+    //   if (gamesByName.length === 0) {
+    //     alert("No games were found for this name. To restart the State, press Enter or click on search.");
+    //   }
+    //   return {
+    //     ...state,
+    //     gamesByName: gamesByNames,
+    //     sortGames: gamesByNames,
+    //     stateSwitched:true,
+    //     previousState: gamesByNames,
+    //   };
+      
+    // 
     case GET_BY_NAME:
-      const gamesByNames = state.allGames.filter((game) => {
-        return game.name.toLowerCase().includes(payload.toLowerCase());
-      });
-      return {
-        ...state,
-        gamesByName: gamesByNames,
-        sortGames: gamesByNames,
-        stateSwitched:true,
-        previousState: gamesByNames,
-      };
+  // Aquí puedes implementar la lógica para filtrar los juegos locales basados en el nombre.
+  const nameToSearch = payload;
+  const findedGames = state.allGames.filter((game) =>
+    game.name.toLowerCase().includes(nameToSearch.toLowerCase())
+  );
+
+  return {
+    ...state,
+    gamesByName: findedGames,
+    sortGames: findedGames,
+    stateSwitched: true,
+    previousState: state.gamesByName,
+  };
+
+  case GET_BY_NAME_FROM_API:
+  const gamesFromApi = payload;
+   const gamesToAdd = gamesFromApi.filter((apiGame) => {
+    return !state.allGames.some((localGame) => localGame.id === apiGame.id);
+  });
+
+  if (gamesToAdd.length > 0) {
+    // Si hay juegos para agregar, combina los juegos de la API con los juegos locales.
+    const combinedGames = [...state.allGames, ...gamesToAdd];
+  
+  return {
+    ...state,
+    allGames: combinedGames, // Actualiza los juegos locales con los combinados.
+  };
+}
+return {...state};
+
+
+    
 
     case GET_BY_ID:
       return {
@@ -62,6 +104,7 @@ const reducer = (state = initialState, { type, payload }) => {
         gamesById: payload,
        
       };
+     
 
       case ORDER_ALPHABET:
    let sortedGames = null;
@@ -100,6 +143,9 @@ const reducer = (state = initialState, { type, payload }) => {
           game.genres.includes(payload)
         );
       }
+      if (filteredGames.length === 0) {
+        alert("No games were found for this genre. To restart the State, place the genres selector in its default position (Fiter by genre).");
+      }
       return {
         ...state,
         gamesByName:filteredGames,
@@ -127,18 +173,21 @@ const reducer = (state = initialState, { type, payload }) => {
   };
 
  case IS_CREATED:
+  let fixState = state.stateSwitched ? [...state.previousState] : [...state.allGames];
+      let changState = state.stateSwitched ?  [...state.gamesByName] :[...state.allGames];
+
   const createdInDb = payload === "true" ? true : payload === "false" ? false : null;
 
   if (createdInDb === null) {
     
     return {
       ...state,
-      gamesByName:state.allGames,
-      sortGames: state.allGames,
+      gamesByName:fixState,
+      sortGames: fixState,
     };
   }
 
-  const filCreatGames = state.allGames.filter((game) => game.createdInDb === createdInDb);
+  const filCreatGames = changState.filter((game) => game.createdInDb === createdInDb);
   return {
     ...state,
     gamesByName:filCreatGames,
@@ -150,6 +199,21 @@ const reducer = (state = initialState, { type, payload }) => {
       ...state,
       gamesById:[],
     }
+    case RETURN_HOME:
+      if (state.switchedState) {
+        return {
+          ...state,
+          gamesByName: state.previousState,
+          stateSwitched: true,
+        };
+      } else {
+        return {
+          ...state,
+          sortGames: state.sortGames,
+          stateSwitched: false,
+        };
+      }
+    
 
   default:
     return { ...state };

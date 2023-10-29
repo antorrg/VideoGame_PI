@@ -9,3 +9,6 @@ export const ORDER_RATING= 'ORDER_RATING';
 export const IS_CREATED = 'IS_CREATED';
 export const LOADING = 'LOADING';
 export const CLEAN_STATE='CLEAN_STATE';
+export const RESTORE_STATE='RESTORE_STATE';
+export const GET_BY_NAME_FROM_API='GET_BY_NAME_FROM_API';
+export const RETURN_HOME = 'RETURN_HOME';

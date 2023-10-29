@@ -13,6 +13,11 @@ function Home() {
   const dispatch = useDispatch();
   const gamesByName = useSelector((state) => state.gamesByName);
   const allGames =useSelector((state)=> state.sortGames);
+  
+  useEffect(() => {
+    // Guarda la URL actual antes de navegar al detalle.
+    localStorage.setItem("previousUrl", window.location.pathname);
+  }, []);
 
   //Segunda opcion:
   const { name } = useParams();

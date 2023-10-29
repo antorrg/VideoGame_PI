@@ -103,6 +103,7 @@ export default function Create() {
          
           await dispatch(createVideogame(input));
           await dispatch(getAllGames());
+          alert("Videogame created successfully");
           setInput({
             name: "",
             description: "",

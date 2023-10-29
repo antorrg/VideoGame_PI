@@ -8,7 +8,7 @@ function SearchBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-
+  
   const handleSearch = async () => {
     if (searchTerm.trim() !== "") {
 

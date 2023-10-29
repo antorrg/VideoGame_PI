@@ -3,22 +3,25 @@ import { useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { formatFields } from "../utils/formaters";
-import { cleanState, getById } from "../Redux/actions";
+import { cleanState, getById, returnHome} from "../Redux/actions";
 
 function Detail() {
+ 
   const dispatch = useDispatch();
   const gamesById = useSelector((state) => state.gamesById);
 
   const { id } = useParams();
 
   useEffect(() => {
+   
     dispatch(getById(id));
   }, [dispatch, id]);
 
   const handleRefresh = () => {
+    dispatch(returnHome())
     dispatch(cleanState());
   };
-  const isgame = gamesById; // Obtenemos el juego por su id
+  const isgame = gamesById; 
 
   let genresFil = formatFields(isgame.genres);
   let platforFil = formatFields(isgame.platforms);
@@ -31,7 +34,7 @@ function Detail() {
         </div>
         <div className={style.text}>
           <h1> {isgame?.name}</h1>
-          <NavLink to={`/home`} onClick ={handleRefresh}>
+          <NavLink to= '/home' onClick ={handleRefresh}>
             <h3>Return to Home:</h3>
           </NavLink>
           <h3>Genres: {genresFil}</h3>
