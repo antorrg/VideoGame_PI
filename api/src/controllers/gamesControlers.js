@@ -31,7 +31,7 @@ const getAllGames = async ()=> {
   
     const gamesAPI = [];
     for(let page = 1; page<=3; page++){
-    const url = `${URL}games?${API_KEY}&page=${page}`
+    const url = `${URL}games?key=${API_KEY}&page=${page}`
 
     const infoApi = (await axios.get(url)).data;
     const gamesFiltered = infoCleaner(infoApi);
@@ -52,7 +52,7 @@ const getAllGames = async ()=> {
 
 const gameByName = async(name)=>{
   try {
-    const infoApi = (await axios.get(`${URL}games?search=${name}&${API_KEY}`)).data;
+    const infoApi = (await axios.get(`${URL}games?search=${name}&key=${API_KEY}`)).data;
     const gameApi = infoCleaner(infoApi);
     const gameFiltered = gameApi.filter(game => game.name.toLowerCase() === name.toLowerCase());
     if(gameFiltered.length>0){
@@ -87,7 +87,7 @@ const getGameById= async(id,source)=>{
         return infodb;
     }
     else{
-        const info=(await axios.get(`${URL}games/${id}?${API_KEY}`)).data;
+        const info=(await axios.get(`${URL}games/${id}?key=${API_KEY}`)).data;
         const infoWash = infoClean2(info);
         return infoWash;
     }

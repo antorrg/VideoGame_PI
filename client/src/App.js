@@ -1,11 +1,12 @@
+import './App.css';
 //Importacion de dependencias:
 import {Routes, Route} from 'react-router-dom';
  //Importacion de modulos:
  import {Landing, Detail, Home, Create} from './views/index1';
+ import axios from 'axios';
+ axios.defaults.baseURL = 'http://localhost:3001';
 
 
-
-import './App.css';
 
 function App() {
   return (

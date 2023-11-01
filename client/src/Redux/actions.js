@@ -1,6 +1,4 @@
-//Dependencies:
 import axios from 'axios';
-
 //Components:
 import {
   GET_ALL_GAMES, 
@@ -19,7 +17,7 @@ import {
 
 export const getAllGames =()=> async (dispatch)=>{
     try {
-      const response = await axios(`http://localhost:3001/games`);
+      const response = await axios(`/games`);
         return dispatch({
           type:GET_ALL_GAMES,
           payload: response.data,
@@ -31,7 +29,7 @@ export const getAllGames =()=> async (dispatch)=>{
 
   export const getAllGenres = () => async (dispatch) => {
     try {
-      const response = await axios.get('http://localhost:3001/genres');
+      const response = await axios.get('/genres');
       return dispatch({
         type: GET_ALL_GENRES,
         payload: response.data,
@@ -43,7 +41,7 @@ export const getAllGames =()=> async (dispatch)=>{
   
   export const getById = (id) => async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/${id}`);
+      const response = await axios.get(`/${id}`);
       return dispatch({
         type: GET_BY_ID,
         payload: response.data,
@@ -59,7 +57,7 @@ export const getAllGames =()=> async (dispatch)=>{
     return async (dispatch) => {
       try {
         // Realiza una petición a la API local usando Axios
-        const response = await axios.get(`http://localhost:3001/games?name=${name}`);
+        const response = await axios.get(`/games?name=${name}`);
         const gamesFromApi = response.data; // Suponiendo que la respuesta contiene los juegos filtrados.
   
         // Realiza el primer dispatch con el resultado de la búsqueda en la API.
@@ -84,7 +82,7 @@ export const getAllGames =()=> async (dispatch)=>{
   export const createVideogame = (payload) => {
     return async (dispatch) => {
       try {
-        const data = await axios.post("http://localhost:3001/post", payload);
+        const data = await axios.post("/post", payload);
         return dispatch({
           type: CREATE_VIDEOGAME,
           payload: data,
@@ -101,28 +99,6 @@ export const orderAlphabet = (payload) => {
       payload,
   }
 };
-
-// export const getGamesForGenre = (name) => {
-//   return async (dispatch) => {
-//     // Simula una espera de 3 segundos antes de verificar si se encontraron juegos.
-//     await new Promise((resolve) => setTimeout(resolve, 1000));
-
-//     // Supongamos que tienes una función o un selector para obtener los juegos del género.
-//     const games = getGamesForGenre(name);
-
-//     if (games.length === 0) {
-//       // No se encontraron juegos para el género después de 3 segundos.
-//       alert("No se encontraron juegos para este género");
-//     } else {
-//       // Actualiza el estado de Redux con los juegos encontrados.
-//       dispatch({
-//         type: ORDER_GENRE,
-//         payload: name,
-//       });
-//     }
-//   };
-// };
-
 
 export const getGamesForGenre = (name) =>{
   return {
