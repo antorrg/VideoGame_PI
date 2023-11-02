@@ -42,7 +42,7 @@ export default function Create() {
   function handleChange(event) {  
     setInput({
       ...input,
-      [event.target.name]: event.target.value, //to fill the state with each prop
+      [event.target.name]: event.target.value, 
     });
     setError(
       validate({
@@ -103,7 +103,6 @@ export default function Create() {
          
           await dispatch(createVideogame(input));
           await dispatch(getAllGames());
-          alert("Videogame created successfully");
           setInput({
             name: "",
             description: "",
@@ -115,7 +114,8 @@ export default function Create() {
           });
           
           navigate("/home");
-         
+          
+          alert("Videogame created successfully");
           
         }
       }

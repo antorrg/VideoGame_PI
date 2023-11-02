@@ -3,7 +3,6 @@ const axios= require('axios');
 require('dotenv').config();
 const {URL, API_KEY} = process.env;
 const {infoCleaner,infoClean2 } = require('../helpers/index');
-const { validate, v4: isUuidv4 } = require('uuid');
 
 
 const getAllGames = async ()=> {
@@ -30,7 +29,7 @@ const getAllGames = async ()=> {
     //Info de la API:
   
     const gamesAPI = [];
-    for(let page = 1; page<=3; page++){
+    for(let page = 1; page<=5; page++){
     const url = `${URL}games?key=${API_KEY}&page=${page}`
 
     const infoApi = (await axios.get(url)).data;
@@ -75,10 +74,6 @@ const gameByName = async(name)=>{
 const getGameById= async(id,source)=>{
   try {
     if(source !== 'api'){
-      const validUuid=id;
-      if (!validate(validUuid) && !isUuidv4(validUuid)) {
-        throw new Error("This Id is not valid");
-      }
         const infodb =(await Videogame.findByPk(id, {include: [{
             model: Genre, attributes: ['name'], through: { attributes: []} }]}));
             if(infodb.length === 0){

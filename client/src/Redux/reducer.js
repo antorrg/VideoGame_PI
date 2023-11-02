@@ -155,15 +155,18 @@ return {...state};
        
   
   case ORDER_RATING:
+    let nameFixState = state.stateSwitched ? [...state.previousState] : [...state.allGames];
+    let nameState = state.stateSwitched ?  [...state.gamesByName] :[...state.sortGames];
+
   let ratinGames = null;
    if (payload === "All") {
-     ratinGames = [...state.allGames];
+     ratinGames = nameFixState;
     
    }if (payload === "ASC") {
-    ratinGames = [...state.sortGames];
+    ratinGames = nameState;
     ratinGames.sort((a, b) => a.rating - b.rating);
   } if (payload === "DES") {
-    ratinGames = [...state.sortGames];
+    ratinGames = nameState;
     ratinGames.sort((a, b) => b.rating - a.rating);
   }
   return {
