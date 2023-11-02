@@ -56,23 +56,19 @@ export const getAllGames =()=> async (dispatch)=>{
   export const getByName = (name) => {
     return async (dispatch) => {
       try {
-        // Realiza una petición a la API local usando Axios
         const response = await axios.get(`/games?name=${name}`);
-        const gamesFromApi = response.data; // Suponiendo que la respuesta contiene los juegos filtrados.
+        const gamesFromApi = response.data; 
   
-        // Realiza el primer dispatch con el resultado de la búsqueda en la API.
         dispatch({
           type: GET_BY_NAME_FROM_API,
           payload: gamesFromApi,
         });
   
-        // Realiza el segundo dispatch con el nombre.
         dispatch({
           type: GET_BY_NAME,
           payload: name,
         });
       } catch (error) {
-        // Maneja los errores aquí si es necesario
         alert('Error al obtener datos desde la API:', error);
       }
     };

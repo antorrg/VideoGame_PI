@@ -64,7 +64,6 @@ const reducer = (state = initialState, { type, payload }) => {
       
     // 
     case GET_BY_NAME:
-  // Aquí puedes implementar la lógica para filtrar los juegos locales basados en el nombre.
   const nameToSearch = payload;
   const findedGames = state.allGames.filter((game) =>
     game.name.toLowerCase().includes(nameToSearch.toLowerCase())
@@ -85,12 +84,11 @@ const reducer = (state = initialState, { type, payload }) => {
   });
 
   if (gamesToAdd.length > 0) {
-    // Si hay juegos para agregar, combina los juegos de la API con los juegos locales.
     const combinedGames = [...state.allGames, ...gamesToAdd];
   
   return {
     ...state,
-    allGames: combinedGames, // Actualiza los juegos locales con los combinados.
+    allGames: combinedGames, 
   };
 }
 return {...state};
@@ -107,18 +105,20 @@ return {...state};
      
 
       case ORDER_ALPHABET:
+    let namFixState = state.stateSwitched ? [...state.previousState] : [...state.allGames];
+    let namState = state.stateSwitched ?  [...state.gamesByName] :[...state.sortGames];
    let sortedGames = null;
    if (payload === "All") {
-     sortedGames = [...state.allGames];
+     sortedGames = namFixState;
    } else if (payload === "A-Z") {
-     sortedGames = [...state.sortGames]; 
+     sortedGames = namState; 
      sortedGames.sort(function (a, b) {
        if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
        if (b.name.toLowerCase() > a.name.toLowerCase()) return -1;
        return 0;
      });
    } else {
-     sortedGames = [...state.sortGames];
+     sortedGames = namState;
      sortedGames.sort(function (a, b) {
        if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
        if (b.name.toLowerCase() > a.name.toLowerCase()) return 1;
@@ -177,20 +177,23 @@ return {...state};
 
  case IS_CREATED:
   let fixState = state.stateSwitched ? [...state.previousState] : [...state.allGames];
-      let changState = state.stateSwitched ?  [...state.gamesByName] :[...state.allGames];
+      let changState = state.stateSwitched ?  [...state.gamesByName] :[...state.sortGames];
 
   const createdInDb = payload === "true" ? true : payload === "false" ? false : null;
 
   if (createdInDb === null) {
-    
     return {
       ...state,
       gamesByName:fixState,
       sortGames: fixState,
     };
   }
-
+  
+  
   const filCreatGames = changState.filter((game) => game.createdInDb === createdInDb);
+  if(filCreatGames.length ===0){
+  alert("No created games were found. To restart the State, place IsCreated? selector in its default position (IsCreated?).");
+  }
   return {
     ...state,
     gamesByName:filCreatGames,
