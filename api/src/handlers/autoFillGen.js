@@ -10,7 +10,7 @@ const fillGenTable = async(req,res)=>{
       const existingGenres = await Genre.findAll();
       if (existingGenres.length === 0) {
           // Hacer una solicitud a la API para obtener datos de géneros
-          const response = (await axios.get(`${URL_GEN}$key={API_KEY}`)).data;
+          const response = (await axios.get(`${URL_GEN}key=${API_KEY}`)).data;
           const genresData= response;
           await Genre.bulkCreate(cleanGenre(genresData));
           console.log('"Genres" table fills succesfully.');

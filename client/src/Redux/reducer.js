@@ -199,6 +199,7 @@ return {...state};
       ...state,
       gamesById:[],
     }
+    
     case RETURN_HOME:
       if (state.switchedState) {
         return {
